@@ -1,15 +1,10 @@
 import { FaAngleDown } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa";
 import { MdAttachMoney } from "react-icons/md";
-import Button from "../components/Button";
+import Button from "../components/button";
 
 // Header
 export const listHeader = [
-  {
-    title: "HOME",
-    icon: <FaAngleDown className="inline-flex mx-1" />,
-    path: "/",
-  },
   {
     title: "ELECTRONICSS",
     icon: <FaAngleDown className="inline-flex mx-1" />,
@@ -19,11 +14,6 @@ export const listHeader = [
     title: "BLOG",
     icon: <FaAngleDown className="inline-flex mx-1" />,
     path: "/blog",
-  },
-  {
-    title: "PAGES",
-    icon: <FaAngleDown className="inline-flex mx-1" />,
-    path: "/pages",
   },
   {
     title: "CONTACT",

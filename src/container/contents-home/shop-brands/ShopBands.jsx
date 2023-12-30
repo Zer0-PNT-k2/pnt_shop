@@ -1,5 +1,5 @@
 import { shopBands } from '../../../constants';
-import Button from '../../../components/Button';
+import Button from '../../../components/button';
 import Wrapper from '../../../components/wrapper'
 
 const ShopBands = () => {

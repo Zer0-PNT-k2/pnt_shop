@@ -1,6 +1,5 @@
 
-const Button = ({children, type, ...rests}) => {
-  
+const Button = ({children, type, ...rests}) => {  
   return (
       <button 
         type= { type }

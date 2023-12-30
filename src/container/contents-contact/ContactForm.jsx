@@ -1,7 +1,6 @@
-import Button from "../../components/Button";
-import Input from "../../components/Input";
-import Wrapper from "../../components/wrapper";
-// import Wrapper from '../../components/wrapper'
+import Button from '../../components/button';
+import Input from '../../components/input';
+import Wrapper from '../../components/wrapper';
 
 const ContactForm = () => {
   return (

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Price from "../../../components/Price/Price";
-import Star from "../../../components/Star/Star";
-import Button from "../../../components/Button";
-import Wrapper from "../../../components/wrapper";
+import Price from '../../../components/price';
+import Star from '../../../components/star';
+import Button from '../../../components/button';
+import Wrapper from '../../../components/wrapper';
 
 const TrendingProducts = () => {
   const [data, setData] = useState([]);

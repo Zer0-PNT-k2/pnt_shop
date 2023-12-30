@@ -4,19 +4,21 @@ import { IoIosSearch } from "react-icons/io";
 import { FiShoppingBag } from "react-icons/fi";
 import { FaRegUser } from "react-icons/fa";
 import { listHeader } from "../../../constants";
-import Button from "../../Button";
-import Input from "../../Input";
+import Button from '../../button';
+import Input from '../../input';
 
 const HeaderBottom = () => {
   return (
     <div className="mx-auto max-w-screen-xl flex justify-between h-15 font-['Open_Sans'] mb-4 text-base">
-      <div className="w-72">
-        <img
-          className="w-16 h-16 rounded-full"
-          alt="LOGO_SHOP"
-          src="./images/LogoTS.png"
-        />
-      </div>
+      <Link to="/">
+        <div className="w-72">
+          <img
+            className="w-16 h-16 rounded-full"
+            alt="LOGO_SHOP"
+            src="./images/LogoTS.png"
+          />
+        </div>
+      </Link>
       <div className="flex w-full">
         <ul className="flex justify-between items-center ">
           {listHeader.map((header) => (

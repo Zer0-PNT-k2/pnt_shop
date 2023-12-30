@@ -1,7 +1,7 @@
 import { FaArrowRight } from "react-icons/fa";
-import Products from "../products/Products";
-import Button from "../../../components/Button";
-import Wrapper from "../../../components/wrapper";
+import Products from '../products';
+import Button from '../../../components/button';
+import Wrapper from '../../../components/wrapper';
 
 const PopularProducts = () => {
   return (
