@@ -7,7 +7,7 @@ const HeaderTop = () => {
       <Wrapper>
         <div className="flex py-2 justify-between font-['Open_Sans'] text-base">
           <div>
-            <span className="">We are open with limited hours and staff.</span>
+            <span className="">Chúng tôi mở cửa với số giờ và nhân viên hạn chế.</span>
           </div>
           <div>
             <div className="flex">

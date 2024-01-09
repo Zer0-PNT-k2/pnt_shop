@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Price from '../../../components/price';
-import Star from '../../../components/star';
-import Button from '../../../components/button';
-import Wrapper from '../../../components/wrapper';
+import Price from "../../../components/price";
+import Star from "../../../components/star";
+import Button from "../../../components/button";
+import Wrapper from "../../../components/wrapper";
 
 const TrendingProducts = () => {
   const [data, setData] = useState([]);
@@ -37,30 +37,34 @@ const TrendingProducts = () => {
           </div>
         </div>
         <div className="flex grid grid-cols-4 gap-8 mb-16">
-          {data.map((product, i) => {
+          {data.map((product) => {
             return (
-              <div className="" key={product.id}>
-                <div className="h-auto w-full items-center shadow-xl pb-6 mb-3">
-                  <div className="flex justify-evenly">
+              <div
+                key={product.id}
+                className="flex justify-center text-center rounded-md bg-gray-100 shadow-xl hover:shadow-2xl"
+              >
+                <div className="w-auto h-auto text-base mb-8">
+                  <Button>
+                    <img
+                      className="w-40 h-40 my-8"
+                      src={product.image}
+                      alt={product.title}
+                    />
+                  </Button>
+                  <div className="hover:text-red-600 my-4">
                     <Button>
-                      <img
-                        className="w-44 h-40 mt-12 mb-14"
-                        src={product.image}
-                        alt={product.title}
-                      />
+                      <h1 className="h-12 mx-12 line-clamp-2">
+                        {product.title}
+                      </h1>
                     </Button>
                   </div>
-                  <div className="text-center">
-                    <Star />
-                    <div className="hover:text-red-600 my-4">
-                      <Button>
-                        <h1 className="whitespace-nowrap max-w-44 overflow-hidden text-ellipsis">
-                          {product.title}
-                        </h1>
-                      </Button>
-                    </div>
-                    <Price price={product.price} />
+                  <div className="flex justify-around">
+                    <Star
+                      stars={product.rating.rate}
+                      countSold={product.rating.count}
+                    />
                   </div>
+                  <Price price={product.price} />
                 </div>
               </div>
             );

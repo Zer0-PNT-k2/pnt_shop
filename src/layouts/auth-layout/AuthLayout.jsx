@@ -6,7 +6,7 @@ const AuthLayout = () => {
       action=""
       className="flex bg-slate-100 h-screen items-center justify-center"
     >
-      <div className="w-96 h-auto p-8 bg-white rounded-2xl">
+      <div className="w-96 h-auto p-8 bg-white rounded-2xl text-base">
         <div className="flex mb-6">
           <img
             className="w-16 h-16 rounded-full"

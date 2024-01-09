@@ -6,24 +6,24 @@ import Button from "../components/button";
 // Header
 export const listHeader = [
   {
-    title: "ELECTRONICSS",
+    title: "Sản phẩm",
     icon: <FaAngleDown className="inline-flex mx-1" />,
-    path: "/products",
+    path: "/products/all",
   },
   {
-    title: "BLOG",
+    title: "Bài viết",
     icon: <FaAngleDown className="inline-flex mx-1" />,
     path: "/blog",
   },
   {
-    title: "CONTACT",
+    title: "Liên hệ",
     icon: "",
     path: "/contact",
   },
 ];
 
 // SideBar --> HeroSection, Banner
-export const siteBar = [
+export const shopifySection = [
   {
     img: "/images/ElectronicsStoreOne.png",
     sale: "SALE UP TO 30% OFF",
@@ -205,19 +205,19 @@ export const shopBands = [
 
 export const contactInfos = [
   {
-    title: "Store location",
-    description: "259 Freedom, New York",
+    title: "Vị trí cửa hàng",
+    description: "Quảng Yên - Quảng Ninh",
   },
   {
-    title: "Work inquiries",
-    description: "tanpham2301@gmail.com",
+    title: "Hỏi đáp công việc",
+    description: "tan2002@gmail.com",
   },
   {
-    title: "Call us",
+    title: "Phone",
     description: "+84-868342028",
   },
   {
-    title: "Open hours",
-    description: "Mon-Sat : 08.00 - 18.00",
+    title: "Giờ mở cửa",
+    description: "Thứ 2 - 7 : 08.00 - 18.00",
   },
 ];

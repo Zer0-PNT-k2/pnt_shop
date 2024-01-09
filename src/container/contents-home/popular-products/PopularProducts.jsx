@@ -1,5 +1,5 @@
 import { FaArrowRight } from "react-icons/fa";
-import Products from '../products';
+import BannerCollection from '../banner-collection';
 import Button from '../../../components/button';
 import Wrapper from '../../../components/wrapper';
 
@@ -21,7 +21,7 @@ const PopularProducts = () => {
           </div>
         </div>
         <div className="mb-24">
-          <Products />
+          <BannerCollection />
         </div>
       </div>
     </Wrapper>

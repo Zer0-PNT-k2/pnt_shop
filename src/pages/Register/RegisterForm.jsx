@@ -1,14 +1,14 @@
 import { CiUser } from "react-icons/ci";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import Button from '../../components/button';
-import Input from '../../components/input';
+import Button from "../../components/button";
+import Input from "../../components/input";
 
 const RegisterForm = () => {
   return (
     <>
       <span>
-        Have account:
+        Already have an account?
         <Button className="px-2 py-6 text-blue-500">
           <Link to="/auth/login">Sign in</Link>
         </Button>
@@ -63,6 +63,11 @@ const RegisterForm = () => {
       >
         Đăng kí
       </Button>
+      <Link to="/">
+        <span className="block text-end mt-6">
+          Quay lại cửa hàng
+        </span>
+      </Link>
     </>
   );
 };

@@ -1,8 +1,8 @@
 import Slider from "react-slick";
-import { siteBar } from '../../../constants';
+import { shopifySection } from '../../../constants';
 import Wrapper from '../../../components/wrapper'
 
-const SiteBar = () => {
+const ShopifySection = () => {
   const settings = {
     rtl: true,
     slidesToShow: 1,
@@ -14,7 +14,7 @@ const SiteBar = () => {
 
   return (
     <Slider {...settings}>
-      {siteBar.map((sB, i) => {
+      {shopifySection.map((sB, i) => {
         return (
           <div key={i} className="text-base">
             <img
@@ -39,4 +39,4 @@ const SiteBar = () => {
   );
 };
 
-export default SiteBar;
+export default ShopifySection;

@@ -1,4 +1,4 @@
-import SiteBar from "../../container/contents-home/site-bar";
+import ShopifySection from "../../container/contents-home/shopify-section";
 import PopularProducts from "../../container/contents-home/popular-products";
 import SubBanner from "../../container/contents-home/sub-banner";
 import TrendingProducts from "../../container/contents-home/trending-products";
@@ -10,7 +10,7 @@ import ContactInfo from "../../container/contents-home/contact-info/index";
 const HomePages = () => {
   return (
     <>
-      <SiteBar />
+      <ShopifySection />
       <PopularProducts />
       <SubBanner />
       <TrendingProducts />

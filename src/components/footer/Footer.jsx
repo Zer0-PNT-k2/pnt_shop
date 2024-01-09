@@ -1,4 +1,4 @@
-import Button from '../button'
+import Button from "../button";
 
 const Footer = () => {
   return (
@@ -11,64 +11,59 @@ const Footer = () => {
           <img
             className="w-32 h-32 p-6 rounded-full"
             alt="LOGO_SHOP"
-            src="./images/LogoTS.png"
+            src="/images/LogoTS.png"
           />
           <p>
             Copyright © 2022 Team90Degree | Built with Drou by Team90Degree.
           </p>
         </div>
         <div>
-          <h1 className="font-semibold text-2xl mb-4">Information</h1>
+          <h1 className="font-semibold text-2xl mb-4">LIÊN HỆ</h1>
           <ul>
             <li>
-              <Button className="hover:text-red-500">Product Support</Button>
+              <b>Hotline:</b>{" "}
+              <Button className="hover:text-red-500">09655664487</Button>
             </li>
             <li>
-              <Button className="hover:text-red-500">Checkout</Button>
+              <b>Trang Web :</b>{" "}
+              <Button className="hover:text-red-500">pntShop.com</Button>
             </li>
             <li>
-              <Button className="hover:text-red-500">License Policy</Button>
+              <b>Email :</b>{" "}
+              <Button className="hover:text-red-500">pntShop@gamil.com</Button>
             </li>
             <li>
-              <Button className="hover:text-red-500">Affiliate</Button>
+              <b>Địa Chỉ :</b>{" "}
+              <Button className="hover:text-red-500">Quảng Ninh</Button>
             </li>
           </ul>
         </div>
         <div>
-          <h1 className="font-semibold text-2xl mb-4">Customer Service</h1>
+          <h1 className="font-semibold text-2xl mb-4">HỖ TRỢ KHÁCH HÀNG</h1>
           <ul>
-            <li>
-              <Button className="hover:text-red-500">Help Center</Button>
-            </li>
-            <li>
-              <Button className="hover:text-red-500">Redeem Voucher</Button>
-            </li>
-            <li>
-              <Button className="hover:text-red-500">Contact Us</Button>
-            </li>
-            <li>
-              <Button className="hover:text-red-500">Policies & Rules</Button>
-            </li>
+            <li>Chính sách đổi trả và bảo hành</li>
+            <li>Chính sách bảo mật</li>
+            <li>Chính sách thanh toán</li>
           </ul>
         </div>
         <div>
-          <h1 className="font-semibold text-2xl mb-4">Information</h1>
+          <h1 className="font-semibold text-2xl mb-4">THÔNG TIN</h1>
           <p>
-            Download our App and get extra 15% Discount on your first Order..!
+          Tải xuống Ứng dụng của chúng tôi và được giảm giá thêm 15% cho đơn hàng đầu tiên của bạn..!
           </p>
-          <div className="flex gap-2 mt-12">
+          <div className="flex gap-2 mt-5">
             <Button>
               <img
                 className=" h-auto rounded-sm"
                 alt="Google Play"
-                src="./images/footer/GooglePlay.png"
+                src="/images/footer/GooglePlay.png"
               />
             </Button>
             <Button>
               <img
                 className=" h-auto rounded-sm"
                 alt="App Store"
-                src="./images/footer/AppStore.png"
+                src="/images/footer/AppStore.png"
               />
             </Button>
           </div>

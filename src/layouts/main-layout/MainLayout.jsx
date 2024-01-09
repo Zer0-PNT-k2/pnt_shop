@@ -1,16 +1,16 @@
 import { Outlet } from "react-router-dom";
 import ScrollToTop from "react-scroll-to-top";
-import HeaderTop from "../../components/headers/header-top";
-import HeaderBottom from "../../components/headers/header-bottom";
+import HeaderTop from "../../components/headers/header";
+import Navigation from "../../components/headers/navigation";
 import Footer from "../../components/footer";
 
 
 const MainLayout = () => {
   return (
     <div>
-      <ScrollToTop smooth className="animate-bounce !bg-red-600" />
+      <ScrollToTop smooth className="animate-bounce !w-12 !h-12 pl-2.5 !bg-red-600 !rounded-full" />
       <HeaderTop />
-      <HeaderBottom />
+      <Navigation />
       <Outlet />
       <Footer />
     </div>

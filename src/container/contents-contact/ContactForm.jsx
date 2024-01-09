@@ -6,7 +6,7 @@ const ContactForm = () => {
   return (
     <Wrapper>
       <div className="text-center text-base mb-24">
-        <h1 className="text-4xl font-normal my-10">Ask us anything here</h1>
+        <h1 className="text-4xl font-normal my-10">Hỏi chúng tôi bất cứ điều gì ở đây!</h1>
         <form action="">
           <div className="grid grid-cols-2 gap-6 font-['Open_Serif']">
             <Input

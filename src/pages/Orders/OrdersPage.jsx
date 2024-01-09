@@ -1,5 +1,5 @@
-import HeaderTop from '../../components/headers/header-top'
-import HeaderBottom from '../../components/headers/header-bottom'
+import HeaderTop from '../../components/headers/header'
+import HeaderBottom from '../../components/headers/navigation'
 import Footer from '../../components/footer'
 
 const OrdersPage = () => {

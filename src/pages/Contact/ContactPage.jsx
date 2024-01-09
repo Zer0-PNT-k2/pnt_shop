@@ -3,7 +3,7 @@ import ContactForm from "../../container/contents-contact/ContactForm";
 import Breadcrumbs from "../../components/breadcrumbs";
 
 const ContactPage = () => {
-  const breadcrumbs = [
+  const contactBreadcrumbs = [
     {
       to: "/contact",
       title: "Contact",
@@ -12,7 +12,7 @@ const ContactPage = () => {
 
   return (
     <div>
-      <Breadcrumbs breadcrumbs={breadcrumbs} />
+      <Breadcrumbs breadcrumbs={contactBreadcrumbs} />
       <Contact />
       <ContactForm />
     </div>

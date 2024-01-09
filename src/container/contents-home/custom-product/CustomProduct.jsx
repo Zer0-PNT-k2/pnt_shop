@@ -7,16 +7,16 @@ const CustomProduct = () => {
       <Wrapper>
         <div className="flex grid grid-cols-3 gap-8 my-16">
           <div className="font-['Open_Serif'] w-full h-96 bg-white pt-8 pl-16">
-            <h1 className="text-2xl font-semibold pb-4">Custom product</h1>
+            <h1 className="text-2xl font-semibold pb-4">Sản phẩm tùy chỉnh</h1>
             <ul className="list-disc ml-4 text-base">
-              <li>Good Service</li>
-              <li>New Development</li>
-              <li>For Community</li>
-              <li>Long Term Development</li>
-              <li>Best sound box</li>
-              <li>Save Our Planet</li>
-              <li>People best choice</li>
-              <li>Help People</li>
+              <li>Dịch vụ tốt</li>
+              <li>Sự phát triển mới</li>
+              <li>Dành cho cộng đồng</li>
+              <li>Phát triển dài hạn</li>
+              <li>Hộp âm thanh tốt nhất</li>
+              <li>Cứu máy bay của chúng tôi</li>
+              <li>Sự lựa chọn tốt nhất của mọi người</li>
+              <li>Giúp mọi người</li>
             </ul>
           </div>
           {containers.map((container, i) => {

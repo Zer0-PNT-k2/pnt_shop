@@ -15,7 +15,7 @@ const HeaderBottom = () => {
           <img
             className="w-16 h-16 rounded-full"
             alt="LOGO_SHOP"
-            src="./images/LogoTS.png"
+            src="/images/LogoTS.png"
           />
         </div>
       </Link>
@@ -65,7 +65,7 @@ const HeaderBottom = () => {
         </div>
         <div>
           <Button type="submit" className="inline-flex hover:text-red-500">
-            <Link to="/login">
+            <Link to="/auth/login">
               <FaRegUser className="w-6 h-6 " />
             </Link>
           </Button>
