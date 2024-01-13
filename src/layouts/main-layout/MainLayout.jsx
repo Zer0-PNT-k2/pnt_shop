@@ -8,7 +8,7 @@ import Footer from "../../components/footer";
 const MainLayout = () => {
   return (
     <div>
-      <ScrollToTop smooth className="animate-bounce !w-12 !h-12 pl-2.5 !bg-red-600 !rounded-full" />
+      <ScrollToTop smooth className="animate-bounce !w-12 !h-12 pl-2.5 !bg-red-400 !rounded-full" />
       <HeaderTop />
       <Navigation />
       <Outlet />

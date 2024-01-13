@@ -9,8 +9,8 @@ import Wishlist from "../pages/Wishlist";
 import OrdersPage from "../pages/Orders";
 import AuthLayout from "../layouts/auth-layout/AuthLayout";
 import MainLayout from "../layouts/main-layout/MainLayout";
-import ProductLayout from "../layouts/product-layout/ProductLayout";
 import NotFoundPage from "../pages/NotFound-404";
+import Details from "../pages/Details";
 
 export const routes = createBrowserRouter([
   {
@@ -19,17 +19,15 @@ export const routes = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <Home />
       },
       {
-        path: "products",
-        element: <ProductsPage />,
-        children: [
-          {
-            path: "all",
-            element: <ProductLayout />,
-          },
-        ],
+        path: "products/details/:id",
+        element: <Details />,
+      },
+      {
+        path: "products/all",
+        element: <ProductsPage />
       },
       {
         path: "blog",

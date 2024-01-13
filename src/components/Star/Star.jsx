@@ -21,7 +21,7 @@ const Star = ({ stars, countSold }) => {
   return (
     <div className="flex mb-4 text-sm ml-2">
       {ratingStar}
-      <p className="ml-2 mt-1">(Đã bán {countSold})</p>
+      <p className="ml-2 mt-1">số lượng: {countSold}</p>
     </div>
   );
 };

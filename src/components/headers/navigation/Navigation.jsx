@@ -36,6 +36,7 @@ const HeaderBottom = () => {
       <div className="flex items-center w-4/12 justify-between">
         <form action="/" className="relative">
           <Input
+            // onChange=""
             className="h-6 w-64 py-4 pl-3 outline-none 
                     border-solid border-2 bg-gray-100
                     rounded-2xl focus:border-red-500"

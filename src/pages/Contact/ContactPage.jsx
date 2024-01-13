@@ -6,7 +6,7 @@ const ContactPage = () => {
   const contactBreadcrumbs = [
     {
       to: "/contact",
-      title: "Contact",
+      title: "Liên hệ",
     },
   ];
 

@@ -15,6 +15,9 @@ const ProductLayout = ({
   onPrePriceChange,
   onNextPriceChange,
   handleFilter,
+  handleReset,
+  price,
+  categories
 }) => {
   const sortArr = [
     {
@@ -67,6 +70,9 @@ const ProductLayout = ({
           onPrePriceChange={onPrePriceChange}
           onNextPriceChange={onNextPriceChange}
           handleFilter={handleFilter}
+          handleReset={handleReset}
+          price={price}
+          categories={categories}
         />
         <div className="flex-1">
           <div className="flex h-12 px-8 justify-between  text-base border-2 border-gray-200 items-center">
@@ -78,12 +84,12 @@ const ProductLayout = ({
                 <IoList className="w-7 h-7 mt-1 focus:bg-red-600" />
               </Link>
             </div>
-            <div className="flex justify-evenly">
-              Showing of {paging.totalPages} result
-            </div>
+            {/* <div className="flex justify-evenly">
+              Trang hiện tại {paging.page} trên tổng {paging.totalPages} trang
+            </div> */}
             <div className="flex w-70 justify-evenly">
               <div className="mt-1 mr-2">
-                <b className="">Sort By:</b>
+                <b className="">Sắp xếp:</b>
               </div>
               <form className="">
                 <select
@@ -100,9 +106,9 @@ const ProductLayout = ({
             </div>
           </div>
           {view === "list" ? (
-            <ProductList dataRender={dataRender} paging={paging}/>
+            <ProductList dataRender={dataRender} paging={paging} price={price} />
           ) : (
-            <ProductGrid dataRender={dataRender} paging={paging} />
+            <ProductGrid dataRender={dataRender} paging={paging} price={price} />
           )}
         </div>
       </div>

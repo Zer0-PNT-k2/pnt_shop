@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Breadcrumbs from "../../components/breadcrumbs";
 import ProductLayout from "../../layouts/product-layout/ProductLayout";
@@ -6,8 +6,10 @@ import ProductLayout from "../../layouts/product-layout/ProductLayout";
 const Products = () => {
   const pageSize = 12;
   const [query] = useSearchParams();
-  const [data, setData] = useState([]);
+  const [datas, setDatas] = useState([]);
+  const dataCloneRef = useRef([]);
   const [dataRender, setDataRender] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [paging, setPaging] = useState({
     page: 1,
     totalPages: 0,
@@ -21,18 +23,17 @@ const Products = () => {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((json) => {
-        setData(json);
+        setDatas(json);
+        dataCloneRef.current = json;
+        getProductCategories(json);
       })
       .catch((error) => console.log(error));
-    // return () => {
-    //   setData([]);
-    // };
   }, []);
   // phân trang
   useEffect(() => {
-    const totalPages = Math.ceil(data.length / pageSize);
+    const totalPages = Math.ceil(datas.length / pageSize);
     setPaging((prev) => ({ ...prev, totalPages }));
-  }, [data]);
+  }, [datas]);
   // lấy số trang trên url
   useEffect(() => {
     setPaging((prev) => ({ ...prev, page: parseInt(query.get("page")) || 1 }));
@@ -41,17 +42,29 @@ const Products = () => {
   // phân trang
   useEffect(() => {
     const offset = (paging.page - 1) * pageSize;
-    setDataRender(data.slice(offset, offset + pageSize));
-  }, [data, paging]);
+    setDataRender(datas.slice(offset, offset + pageSize));
+  }, [datas, paging]);
+
+  const getProductCategories = (productData) => {
+    fetch("https://fakestoreapi.com/products/categories")
+      .then((res) => res.json())
+      .then((json) =>
+        setCategories(
+          json.map((c) => {
+            const quantity = productData.filter((x) => x.category === c);
+            return { title: c, isChecked: false, quantity: quantity.length };
+          })
+        )
+      );
+  };
+
   const productsBreadcrumbs = [
     {
       to: "/products",
       title: "Sản phẩm",
     },
   ];
-
-  console.log(data)
-
+  // sắp xếp
   const handleSort = (e) => {
     switch (e.target.value) {
       case "1":
@@ -59,22 +72,22 @@ const Products = () => {
       case "2":
         break;
       case "3":
-        setData((d) => {
+        setDatas((d) => {
           return [...d].sort((a, b) => a.title.localeCompare(b.title));
         });
         break;
       case "4":
-        setData((d) => {
+        setDatas((d) => {
           return [...d].sort((a, b) => b.title.localeCompare(a.title));
         });
         break;
       case "5":
-        setData((d) => {
+        setDatas((d) => {
           return [...d].sort((a, b) => a.price - b.price);
         });
         break;
       case "6":
-        setData((d) => {
+        setDatas((d) => {
           return [...d].sort((a, b) => b.price - a.price);
         });
         break;
@@ -88,11 +101,23 @@ const Products = () => {
   };
 
   const handleCheck = (e) => {
-    console.log(e.target.value);
     switch (e.target.name) {
-      case "Availability":
-        // if(e.target.name === "inStock") {
-        // } else
+      case "Thongke":
+        break;
+      case "Loai":
+        const category = e.target.value;
+        setCategories((prev) => {
+          const result = prev.map((c) =>
+            c.title === category ? { ...c, isChecked: !c.isChecked } : c
+          );
+          const checked = result.filter((x) => x.isChecked);
+          setDatas(
+            dataCloneRef.current.filter((p) =>
+              checked.length ? checked.find((x) => x.title === p.category) : p
+            )
+          );
+          return result;
+        });
         break;
       default:
         throw new Error("Invalid sort value: " + e.target.value);
@@ -108,11 +133,14 @@ const Products = () => {
   };
 
   const handleFilterPrice = () => {
-    const data2 = [...data]
-    const newData = data2.filter(
-      (d) => d.price >= price.prevPrice && d.price <= price.nextPrice
-    );
-    setDataRender(newData);
+    const newData = datas.filter((d, _) => {
+      return d.price >= price.prevPrice && d.price <= price.nextPrice;
+    });
+    setDatas(newData);
+  };
+
+  const handleResetPrice = () => {
+    setDatas(dataCloneRef.current);
   };
 
   return (
@@ -122,11 +150,14 @@ const Products = () => {
         view={query.get("view")}
         dataRender={dataRender}
         paging={paging}
+        price={price}
         onSort={handleSort}
         onCheck={handleCheck}
         onPrePriceChange={handlePrePrice}
         onNextPriceChange={handleNextPrice}
         handleFilter={handleFilterPrice}
+        handleReset={handleResetPrice}
+        categories={categories}
       />
     </>
   );
