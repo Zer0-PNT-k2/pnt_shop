@@ -1,6 +1,7 @@
 import { FaLongArrowAltRight } from "react-icons/fa";
-import Button from "../../../components/button";
-import Input from "../../../components/input";
+import Button from '../../../components/button';
+import Input from '../../../components/input';
+import { size, color } from '../../../constants';
 
 const SideBar = ({
   onCheck,
@@ -90,8 +91,8 @@ const SideBar = ({
       <div className="text-base w-full bg-gray-100 px-4 py-6 mb-5 rounded-lg">
         <h1 className="text-2xl mb-5">Loại</h1>
         <ul className="h-44 overflow-y-scroll">
-          {categories.map((c) => (
-            <li>
+          {categories.map((c, i) => (
+            <li key={i}>
               <Input
                 type="checkbox"
                 onChange={onCheck}
@@ -108,71 +109,28 @@ const SideBar = ({
       <div className="text-base w-full bg-gray-100 px-4 py-6 mb-5 rounded-lg">
         <h1 className="text-2xl mb-5">Kích thước</h1>
         <ul className="h-44 overflow-y-scroll">
-          <li>
-            <Input
-              type="checkbox"
-              onChange={onCheck}
-              value="S"
-              className="mr-1"
-            />
-            S <span>(9)</span>
-          </li>
-          <li>
-            <Input
-              type="checkbox"
-              onChange={onCheck}
-              value="M"
-              className="mr-1"
-            />
-            M <span>(7)</span>
-          </li>
-          <li>
-            <Input
-              type="checkbox"
-              onChange={onCheck}
-              value="L"
-              className="mr-1"
-            />
-            L <span>(7)</span>
-          </li>
-          <li>
-            <Input
-              type="checkbox"
-              onChange={onCheck}
-              value="XL"
-              className="mr-1"
-            />
-            XL <span>(7)</span>
-          </li>
-          <li>
-            <Input type="checkbox" value="2XL" className="mr-1" />
-            2XL <span>(7)</span>
-          </li>
-          <li>
-            <Input type="checkbox" value="3XL" className="mr-1" />
-            3XL <span>(7)</span>
-          </li>
+          {size.map((s, i) => (
+            <li key={i}>
+              <Input
+                type="checkbox"
+                onChange={onCheck}
+                value={s.title}
+                className="mr-1"
+              />
+              {s.title} <span>(9)</span>
+            </li>
+          ))}
         </ul>
       </div>
       <div className="text-base w-full bg-gray-100 px-4 py-6 mb-5 rounded-lg">
         <h1 className="text-2xl mb-5">Màu</h1>
         <ul>
-          <li>
-            <Input type="checkbox" value="Đen" className="mr-1" />
-            Đen <span>(9)</span>
-          </li>
-          <li>
-            <Input type="checkbox" value="Trắng" className="mr-1" />
-            Trắng <span>(7)</span>
-          </li>
-          <li>
-            <Input type="checkbox" value="Xanh" className="mr-1" />
-            Xanh <span>(7)</span>
-          </li>
-          <li>
-            <Input type="checkbox" value="xam" className="mr-1" />
-            Xám <span>(7)</span>
-          </li>
+          {color.map((c, i) => (
+            <li key={i}>
+              <Input type="checkbox" value={c.title} className="mr-1" />
+              {c.title} <span>(9)</span>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

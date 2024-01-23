@@ -4,8 +4,8 @@ import { IoIosSearch } from "react-icons/io";
 import { FiShoppingBag } from "react-icons/fi";
 import { FaRegUser } from "react-icons/fa";
 import { listHeader } from "../../../constants";
-import Button from '../../button';
-import Input from '../../input';
+import Button from "../../button";
+import Input from "../../input";
 
 const HeaderBottom = () => {
   return (
@@ -57,12 +57,14 @@ const HeaderBottom = () => {
           </Link>
         </div>
         <div className="relative mx-4">
-          <Button type="submit" className="inline-flex">
-            <FiShoppingBag className="w-6 h-6 " />
-            <div className="absolute top-3 left-2 text-red-500 rounded-full bg-red-600">
-              <span className="px-2 text-white">0</span>
-            </div>
-          </Button>
+          <Link to="order">
+            <Button type="submit" className="inline-flex">
+              <FiShoppingBag className="w-6 h-6 " />
+              <div className="absolute top-3 left-2 text-red-500 rounded-full bg-red-600">
+                <span className="px-2 text-white">0</span>
+              </div>
+            </Button>
+          </Link>
         </div>
         <div>
           <Button type="submit" className="inline-flex hover:text-red-500">

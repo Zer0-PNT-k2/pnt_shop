@@ -58,10 +58,11 @@ const TrendingProducts = () => {
                       </h1>
                     </Button>
                   </div>
-                  <div className="flex justify-around">
+                  <div className="text-center">
                     <Star
                       stars={product.rating.rate}
                       countSold={product.rating.count}
+                      title1="reviews"
                     />
                   </div>
                   <Price price={product.price} />

@@ -52,10 +52,9 @@ const Products = () => {
                     </Button>
                   </div>
                 </Link>
-                <div className="flex justify-around">
+                <div className="text-center">
                   <Star
                     stars={product.rating.rate}
-                    countSold={product.rating.count}
                   />
                 </div>
                 <Price price={product.price} />

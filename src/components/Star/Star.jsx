@@ -1,7 +1,7 @@
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
 
-const Star = ({ stars, countSold }) => {
+const Star = ({ stars, countSold, title, title1 }) => {
   const ratingStar = Array.from({ length: 5 }, (_, index) => {
     let number = index + 0.5;
 
@@ -19,10 +19,12 @@ const Star = ({ stars, countSold }) => {
   });
 
   return (
-    <div className="flex mb-4 text-sm ml-2">
-      {ratingStar}
-      <p className="ml-2 mt-1">số lượng: {countSold}</p>
-    </div>
+    <>
+      <div className="inline-flex mx-auto text-sm">{ratingStar}</div>
+      <div>
+        <p className="ml-2 mb-4">{title} {countSold} {title1}</p>
+      </div>
+    </>
   );
 };
 

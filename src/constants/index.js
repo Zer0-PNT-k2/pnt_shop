@@ -221,3 +221,30 @@ export const contactInfos = [
     description: "Thứ 2 - 7 : 08.00 - 18.00",
   },
 ];
+
+export const size = [
+  {
+    title: "S",
+  },
+  {
+    title: "M",
+  },
+  {
+    title: "L",
+  },
+];
+
+export const color = [
+  {
+    title: "red",
+    css: "bg-red-400 mx-2 w-6 h-6 rounded-full",
+  },
+  {
+    title: "green",
+    css: "bg-black mx-2 w-6 h-6 rounded-full",
+  },
+  {
+    title: "blue",
+    css: "bg-blue-400 mx-2 w-6 h-6 rounded-full",
+  },
+];

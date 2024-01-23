@@ -28,10 +28,11 @@ const ProductGrid = ({ dataRender, paging }) => {
                       <h1 className="h-12 line-clamp-2">{product.title}</h1>
                     </Button>
                   </div>
-                  <div className="flex justify-around">
+                  <div className="text-center">
                     <Star
                       stars={product.rating.rate}
                       countSold={product.rating.count}
+                      title="Số lượng:"
                     />
                   </div>
                   <Price price={product.price} />
