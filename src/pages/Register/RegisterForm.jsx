@@ -16,6 +16,38 @@ const RegisterForm = () => {
       <div className="mb-6">
         <label
           className="inline-flex items-center"
+          htmlFor="firstname-resgister"
+        >
+          <b>Firstname</b>
+        </label>
+        <br />
+        <Input
+          className="w-full pl-2 outline-none border-solid border-2 border-b-blue-500 rounded-xl"
+          id="firstname-resgister"
+          type="text"
+          autoComplete="new-firstname"
+          placeholder="Firstname"
+        />
+      </div>
+      <div className="mb-6">
+        <label
+          className="inline-flex items-center"
+          htmlFor="lastname-resgister"
+        >
+          <b>Lastname</b>
+        </label>
+        <br />
+        <Input
+          className="w-full pl-2 outline-none border-solid border-2 border-b-blue-500 rounded-xl"
+          id="lastname-resgister"
+          type="text"
+          autoComplete="new-lastname"
+          placeholder="Lastname"
+        />
+      </div>
+      <div className="mb-6">
+        <label
+          className="inline-flex items-center"
           htmlFor="username-resgister"
         >
           <CiUser className="inline-flex" /> <b>Username</b>

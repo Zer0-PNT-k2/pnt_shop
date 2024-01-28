@@ -224,26 +224,32 @@ export const contactInfos = [
 
 export const size = [
   {
+    id: 1,
     title: "S",
   },
   {
+    id: 2,
     title: "M",
   },
   {
+    id: 3,
     title: "L",
   },
 ];
 
 export const color = [
   {
+    id: 1,
     title: "red",
     css: "bg-red-400 mx-2 w-6 h-6 rounded-full",
   },
   {
-    title: "green",
+    id: 2,
+    title: "black",
     css: "bg-black mx-2 w-6 h-6 rounded-full",
   },
   {
+    id: 3,
     title: "blue",
     css: "bg-blue-400 mx-2 w-6 h-6 rounded-full",
   },

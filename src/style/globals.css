@@ -14,3 +14,15 @@ body {
 li {
     padding-bottom: 12px;
 }
+
+thead, tbody, tr, th, td {
+    border: 1px black solid;
+}
+
+thead, th {
+    height: 4rem;
+}
+
+tbody, td {
+    height: 10rem;
+}

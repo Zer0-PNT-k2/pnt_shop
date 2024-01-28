@@ -1,14 +1,47 @@
 import { FaRegUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from '../../components/button';
 import Input from '../../components/input';
+import { useState } from "react";
+import axios from "axios";
 
 // import alias in
 
 const LoginForm = () => {
+  // mor_2314
+  // 83r5^_
+  const navigate = useNavigate();
+  const [user, setUser] = useState({ username: "mor_2314", password: "83r5^_" })
+
+  const handleGetInput = (e) => {
+    setUser(
+      prev => ({
+        ...prev,
+        [e.target.name]: e.target.value
+      })
+    )
+  }
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const resp = await axios({
+      method: "POST",
+      url: "https://fakestoreapi.com/auth/login",
+      data: user,
+    });
+    console.log(resp);
+    if (resp.status == 200) {
+      localStorage.setItem("isLogin", true);
+      localStorage.setItem("token", resp.data.token);
+      navigate("/");
+    } else {
+      // Xu ly loi dang nhap 
+    }
+  }
+
   return (
-    <>
+    <form onSubmit={handleLogin}>
       <div className="mb-6">
         <b className="text-lg">Sign in</b>
         <br />
@@ -22,9 +55,11 @@ const LoginForm = () => {
         <Input
           className="w-full pl-3 outline-none border-solid border-2 border-b-blue-500 rounded-xl"
           id="username-login"
+          name="username"
           type="text"
           autoComplete="new-username"
           placeholder="Username"
+          onChange={handleGetInput}
         />
       </div>
       <div className="mb-6">
@@ -35,19 +70,19 @@ const LoginForm = () => {
         <Input
           className="w-full pl-3 outline-none border-solid border-2 border-b-blue-500 rounded-xl"
           id="password-login"
+          name="password"
           autoComplete="new-password"
           type="password"
           placeholder="Password"
+          onChange={handleGetInput}
         />
       </div>
-      <Link to="/">
-        <Button
-          type="submit"
-          className="py-1 w-full bg-blue-500 text-white rounded-xl"
-        >
-          Login
-        </Button>
-      </Link>
+      <Button
+        type="submit"
+        className="py-1 w-full bg-blue-500 text-white rounded-xl"
+      >
+        Login
+      </Button>
 
       <span>
         No account?
@@ -55,7 +90,7 @@ const LoginForm = () => {
           <Link to="/auth/register">Sign up</Link>
         </Button>
       </span>
-    </>
+    </form>
   );
 };
 

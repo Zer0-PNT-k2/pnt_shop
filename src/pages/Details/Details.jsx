@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { MdAttachMoney } from "react-icons/md";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Breadcrumbs from "../../components/breadcrumbs";
 import Star from "../../components/star";
 import Wrapper from "../../components/wrapper";
@@ -10,8 +10,6 @@ import { size, color } from "../../constants";
 
 const Details = () => {
   const [data, setData] = useState({});
-  const [count, setCount] = useState(1);
-  const [dataCast, setDataCast] = useState({ ...data, size: "", color: "" });
   const params = useParams();
   const contactBreadcrumbs = [
     {
@@ -28,24 +26,63 @@ const Details = () => {
     fetch(`https://fakestoreapi.com/products/${params.id}`)
       .then((res) => res.json())
       .then((json) => {
-        setData(json);
+        const productDetail = processProductData(json);
+        setData(productDetail);
       })
       .catch((error) => console.log(error));
   }, [params]);
 
-  const handelcount = (e) => {
-    if (e.target.name === "tang") {
-      setCount(count + 1);
-    } else {
-      setCount(count - 1);
-    }
+  const processProductData = (product) => {
+    const sizes = size.map((s, i) => ({ ...s, isChecked: i === 0 }));
+    const colors = color.map((c, i) => ({ ...c, isChecked: i === 0 }));
+
+    return { ...product, colors, sizes, count: 1 };
+  }
+
+  const handleCount = (direction) => {
+    setData(prev => {
+      let count = prev.count;
+      if (direction === "tang") {
+        count += 1;
+      } else if (count > 1) {
+        count -= 1;
+      }
+      return { ...prev, count };
+    })
   };
 
-  const handelAddCast = () => {
-    setDataCast({
-      ...data,
-      count: count,
+  const handleStateCheck = (entity, property) => {
+    setData(prev => {
+      const state = prev[property].map((item) => ({ ...item, isChecked: item.id === entity.id }));
+      return { ...prev, [property]: state };
+    })
+  }
+
+  const handelAddCart = () => {
+    let localCartData = JSON.parse(localStorage.getItem("dataCart") || "[]");
+    // [] --> chua co san pham nao trong gio hang
+    // [{id: 1}] --> Nhung detailID = 2 -->  chua co san pham nao trong gio hang
+    const isExists = localCartData.find(product => {
+      const sizeChecked = product.sizes.find((s) => s.isChecked);
+      const colorChecked = product.colors.find((s) => s.isChecked);
+
+      const sizeCurrChecked = data.sizes.find((s) => s.isChecked);
+      const colorCurrChecked = data.colors.find((s) => s.isChecked);
+
+      return product.id === data.id && sizeChecked.id === sizeCurrChecked.id && colorChecked.id === colorCurrChecked.id;
     });
+    // Trường hợp có sản phẩm trong giỏ hàng r
+    if (isExists) {
+      localCartData = localCartData.map(prev => ({ ...prev, count: prev.count += data.count }));
+    } else {
+      localCartData.push(data);
+    }
+    // Nếu chưa có san pham hien tai dang xem trong gio hang --> thì add
+    // Có trùng size, color --> thì tăng số lượng lên
+    // Có rồi nhưng lệch size hoặc color --> thì add vào
+
+    // Cuối cùng luôn đẩy dữ liệu vào local
+    localStorage.setItem("dataCart", JSON.stringify(localCartData));
   };
 
   return (
@@ -84,11 +121,12 @@ const Details = () => {
             <p className="w-4/6 my-7">{data.description}</p>
             <div className="my-6">
               <span>Size: </span>
-              {size.map((s, i) => (
+              {data.sizes?.map((s, i) => (
                 <button
                   key={i}
-                  className="border border-black mx-2 w-12 h-6 rounded-lg focus:bg-red-500 "
+                  className={`border border-black mx-2 w-12 h-6 rounded-lg ${s.isChecked ? "bg-red-500" : ""}`}
                   value={s.title}
+                  onClick={(e) => handleStateCheck(s, "sizes")}
                 >
                   {s.title}
                 </button>
@@ -96,38 +134,39 @@ const Details = () => {
             </div>
             <div className="flex my-9 h-8 place-items-center">
               <span>Color: </span>
-              {color.map((c, i) => (
-                <button key={i} className={c.css} value={c.title}></button>
+              {data.colors?.map((c, i) => (
+                <button key={i}
+                  className={`${c.css} ${c.isChecked ? "bg-white" : ""}`}
+                  value={c.title}
+                  onClick={(e) => handleStateCheck(c, "colors")}
+                ></button>
               ))}
             </div>
             <div className="flex w-96 my-4 justify-between">
               <div className="flex h-12 w-32 place-items-center justify-between">
                 <button
-                  onClick={handelcount}
-                  name="giam"
+                  onClick={() => handleCount("giam")}
                   className="border border-black px-2"
                 >
                   -
                 </button>
-                <span>{count}</span>
+                <span>{data.count}</span>
                 <button
-                  onClick={handelcount}
-                  name="tang"
+                  onClick={() => handleCount("tang")}
                   className="border border-black px-2"
                 >
                   +
                 </button>
               </div>
               <div className="">
-                <Link to="/order">
-                  <button
-                    onClick={handelAddCast}
-                    className="rounded bg-black text-white px-3 py-0.5 mt-2 
+                <button
+                  type="submit"
+                  onClick={handelAddCart}
+                  className="rounded bg-black text-white px-3 py-0.5 mt-2 
                             hover:bg-red-600"
-                  >
-                    Thêm vào giỏ hàng
-                  </button>
-                </Link>
+                >
+                  Thêm vào giỏ hàng
+                </button>
               </div>
               <div>
                 <button

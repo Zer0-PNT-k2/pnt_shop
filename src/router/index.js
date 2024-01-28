@@ -6,7 +6,7 @@ import ProductsPage from "../pages/Products";
 import BlogPage from "../pages/Blog";
 import ContactPage from "../pages/Contact";
 import Wishlist from "../pages/Wishlist";
-import OrdersPage from "../pages/Orders";
+import OrdersPage from "../pages/Orders/OrdersPage";
 import AuthLayout from "../layouts/auth-layout/AuthLayout";
 import MainLayout from "../layouts/main-layout/MainLayout";
 import NotFoundPage from "../pages/NotFound-404";

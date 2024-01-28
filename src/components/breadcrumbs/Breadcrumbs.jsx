@@ -8,7 +8,7 @@ function Breadcrumbs({ breadcrumbs }) {
   const lastItemAtrr = { "aria-current": "page" };
 
   return (
-    <div className="w-full h-24 bg-gray-200 text-base mb-24">
+    <div className="w-full h-24 bg-gray-200 text-base font-['Open_Sans'] mb-24">
       <Wrapper>
         <nav className="flex  h-24 items-center" aria-label="Breadcrumb">
           <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">

@@ -1,8 +1,7 @@
 
-const Button = ({children, type, ...rests}) => {  
+const Button = ({children, ...rests}) => {  
   return (
       <button 
-        type= { type }
         {...rests}
       >
         {children}

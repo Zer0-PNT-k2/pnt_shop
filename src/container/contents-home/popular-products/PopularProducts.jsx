@@ -2,6 +2,7 @@ import { FaArrowRight } from "react-icons/fa";
 import BannerCollection from '../banner-collection';
 import Button from '../../../components/button';
 import Wrapper from '../../../components/wrapper';
+import { Link } from "react-router-dom";
 
 const PopularProducts = () => {
   return (
@@ -14,9 +15,11 @@ const PopularProducts = () => {
             </h1>
           </div>
           <div>
-            <Button className="hover:text-red-600 leading-9 font-semibold pr-2">
-              View all products
-            </Button>
+            <Link to="/products/all">
+              <Button className="hover:text-red-600 leading-9 font-semibold pr-2">
+                View all products
+              </Button>
+            </Link>
             <FaArrowRight className="inline-flex text-red-600" />
           </div>
         </div>
