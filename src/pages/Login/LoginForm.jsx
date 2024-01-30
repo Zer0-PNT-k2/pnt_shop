@@ -12,7 +12,7 @@ const LoginForm = () => {
   // mor_2314
   // 83r5^_
   const navigate = useNavigate();
-  const [user, setUser] = useState({ username: "mor_2314", password: "83r5^_" })
+  const [user, setUser] = useState({ username: "", password: "" })
 
   const handleGetInput = (e) => {
     setUser(
@@ -30,13 +30,13 @@ const LoginForm = () => {
       url: "https://fakestoreapi.com/auth/login",
       data: user,
     });
-    console.log(resp);
     if (resp.status == 200) {
       localStorage.setItem("isLogin", true);
       localStorage.setItem("token", resp.data.token);
       navigate("/");
     } else {
       // Xu ly loi dang nhap 
+      console.log("loi")
     }
   }
 

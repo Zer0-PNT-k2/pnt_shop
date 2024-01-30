@@ -5,38 +5,32 @@ import { IoIosSearch } from "react-icons/io";
 import { FiShoppingBag } from "react-icons/fi";
 import { FaRegUser } from "react-icons/fa";
 import { listHeader } from "../../../constants";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import Button from "../../button";
 import Input from "../../input";
-import { useEffect, useMemo, useState } from "react";
-import axios from "axios";
+import { Carts } from "../../cartContext/CartContext";
 
-const HeaderBottom = () => {
-  const [data, setData] = useState(JSON.parse(localStorage.getItem("dataCart") || "[]"))
-  const [isLogin] = useState(localStorage.getItem("isLogin"));
-  const [user, setUser] = useState({})
+const Navigation = () => {
+  const [isLogin] = useState(JSON.parse(localStorage.getItem("isLogin")));
+  const [user, setUser] = useState({});
+  const count = useContext(Carts)
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     const decoded = jwtDecode(token);
-    console.log(decoded);
     const userId = decoded.sub;
     axios({
       method: "GET",
-      url: `https://fakestoreapi.com/users/${userId}`
-    }).then(res => {
-      setUser(res)
-    })
-
-  }, [])
-
-  const result = useMemo(() => {
-    const count = data.reduce((a, c) => (a + c.count), 0);
-    return count;
-  }, [])
+      url: `https://fakestoreapi.com/users/${userId}`,
+    }).then((res) => {
+      setUser(res);
+    });
+  }, []);
 
   const handleLogout = () => {
     localStorage.setItem("isLogin", false);
-  }
+  };
 
   return (
     <div className="mx-auto max-w-screen-xl flex justify-between h-15 font-['Open_Sans'] mb-4 text-base">
@@ -91,31 +85,24 @@ const HeaderBottom = () => {
             <Button type="submit" className="inline-flex">
               <FiShoppingBag className="w-6 h-6 " />
               <div className="absolute top-3 left-2 text-red-500 rounded-full bg-red-600">
-                <span className="px-2 text-white">{result}</span>
+                <span className="px-2 text-white">{count.count}</span>
               </div>
             </Button>
           </Link>
         </div>
         <div className="w-1/2">
           <Button type="submit" className="inline-flex hover:text-red-500">
-            {
-              isLogin ? (
-                <Link to="/auth/login">
-                  <button
-                    type="submit"
-                    onClick={handleLogout}
-                  >
-                    <span className="text-base">{`${user.data?.name.lastname} ${user.data?.name.firstname}`}</span>
-                  </button>
-                </Link>
-              ) :
-                (
-                  <Link to="/auth/login">
-                    <FaRegUser className="w-6 h-6" />
-                  </Link>
-                )
-            }
-
+            {isLogin ? (
+              <Link to="/auth/login">
+                <button type="submit" onClick={handleLogout}>
+                  <span className="text-base">{`${user.data?.name.lastname} ${user.data?.name.firstname}`}</span>
+                </button>
+              </Link>
+            ) : (
+              <Link to="/auth/login">
+                <FaRegUser className="w-6 h-6" />
+              </Link>
+            )}
           </Button>
         </div>
       </div>
@@ -123,4 +110,4 @@ const HeaderBottom = () => {
   );
 };
 
-export default HeaderBottom;
+export default Navigation;

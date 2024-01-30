@@ -22,8 +22,8 @@ const OrdersPage = () => {
         data.length ? (
           data.map((c, i) => {
             return (
-              <Wrapper>
-                <table key={i} className="max-w-full text-center font-['Open_Sans'] table-fixed text-base mb-12">
+              <Wrapper key={i}>
+                <table className="max-w-full text-center font-['Open_Sans'] table-fixed text-base mb-12">
                   <thead>
                     <tr>
                       <th>SẢN PHẨM</th>

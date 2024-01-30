@@ -7,11 +7,14 @@ import "./style/index.css";
 import "./style/globals.css";
 // import App from "./App";
 import { routes } from "./router";
+import { CartContext } from "./components/cartContext/CartContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={routes} />
+    <CartContext>
+      <RouterProvider router={routes} />
+    </CartContext>
   </React.StrictMode>
 );
 
