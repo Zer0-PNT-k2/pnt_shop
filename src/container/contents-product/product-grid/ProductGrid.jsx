@@ -35,7 +35,7 @@ const ProductGrid = ({ dataRender, paging }) => {
                       title="Số lượng:"
                     />
                   </div>
-                  <Price price={product.price} />
+                  <Price price={Math.ceil(product.price)} />
                 </div>
               </Link>
             </div>

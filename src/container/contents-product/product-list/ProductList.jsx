@@ -1,4 +1,3 @@
-import { MdAttachMoney } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Button from "../../../components/button";
 import Star from "../../../components/star";
@@ -6,6 +5,12 @@ import Star from "../../../components/star";
 // import { Link } from "react-router-dom";
 
 const ProductList = ({ dataRender, paging }) => {
+
+  const VND = new Intl.NumberFormat('vi-VN', {
+    style: 'currency',
+    currency: 'VND',
+  });
+
   return (
     <>
       <div className="snap-align-none">
@@ -42,8 +47,7 @@ const ProductList = ({ dataRender, paging }) => {
                       />
                     </div>
                     <div className="flex items-center text-red-600 font-semibold text-lg ml-1">
-                      <MdAttachMoney />
-                      <span>{product.price}</span>
+                      <span>{VND.format(Math.ceil(product.price))}</span>
                     </div>
                   </div>
                 </div>

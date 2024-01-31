@@ -14,7 +14,7 @@ const Wishlist = () => {
     <>
       <Breadcrumbs breadcrumbs={contactBreadcrumbs} />
       <Wrapper>
-        <div className="mb-24">
+        <div className="mb-24 font-['Open_Sans']">
           <h1 className="block text-3xl font-medium">
             Danh sách mong muốn của bạn hiện đang trống!
           </h1>

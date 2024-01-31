@@ -65,7 +65,7 @@ const TrendingProducts = () => {
                       title1="reviews"
                     />
                   </div>
-                  <Price price={product.price} />
+                  <Price price={Math.ceil(product.price)} />
                 </div>
               </div>
             );

@@ -57,7 +57,7 @@ const Products = () => {
                     stars={product.rating.rate}
                   />
                 </div>
-                <Price price={product.price} />
+                <Price price={Math.ceil(product.price)} />
               </div>
             </div>
           </div>

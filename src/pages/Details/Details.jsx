@@ -11,7 +11,7 @@ import { Carts } from "../../components/cartContext/CartContext";
 
 const Details = () => {
   const [data, setData] = useState({});
-  const count = useContext(Carts)
+  const count = useContext(Carts);
   const params = useParams();
   let localCartData = JSON.parse(localStorage.getItem("dataCart") || "[]");
   const contactBreadcrumbs = [
@@ -24,6 +24,11 @@ const Details = () => {
       title: data.title,
     },
   ];
+
+  const VND = new Intl.NumberFormat('vi-VN', {
+    style: 'currency',
+    currency: 'VND',
+  });
   
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${params.id}`)
@@ -102,7 +107,7 @@ const Details = () => {
     <>
       <Breadcrumbs breadcrumbs={contactBreadcrumbs} />
       <Wrapper>
-        <div className="grid grid-flow-col gap-8 my-24">
+        <div className="grid grid-flow-col gap-8 my-24 font-['Open_Sans']">
           <div className="col-span-5">
             <div className="w-96 flex rounded border border-black">
               <img
@@ -128,8 +133,7 @@ const Details = () => {
               className="py-4 border-2 border-y-neutral-100 border-x-transparent
             flex items-center text-red-600 font-semibold text-lg ml-1 !text-3xl"
             >
-              <MdAttachMoney />
-              <span className="">{data.price}</span>
+              <span className="">{VND.format(Math.ceil(data.price * 23000))}</span>
             </div>
             <p className="w-4/6 my-7">{data.description}</p>
             <div className="my-6">

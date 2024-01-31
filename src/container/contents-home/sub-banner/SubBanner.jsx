@@ -14,7 +14,7 @@ const SubBanner = () => {
                 <h1 className="my-4 text-3xl font-semibold">
                   {subBanner.name}
                 </h1>
-                {subBanner.price}
+                {Math.ceil(subBanner.price)}
                 {subBanner.button}
               </div>
             </div>
