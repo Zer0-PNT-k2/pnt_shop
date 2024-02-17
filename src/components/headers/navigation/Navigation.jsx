@@ -18,15 +18,18 @@ export default function Navigation() {
   const count = useContext(Carts);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const decoded = jwtDecode(token);
-    const userId = decoded.sub;
-    axios({
-      method: "GET",
-      url: `https://fakestoreapi.com/users/${userId}`,
-    }).then((res) => {
-      setUser(res);
-    });
+    const isLogin = localStorage.getItem("isLogin");
+    if (isLogin) {
+      const token = localStorage.getItem("token");
+      const decoded = jwtDecode(token);
+      const userId = decoded.sub;
+      axios({
+        method: "GET",
+        url: `https://fakestoreapi.com/users/${userId}`,
+      }).then((res) => {
+        setUser(res);
+      });
+    }
   }, []);
 
   const handleLogout = () => {
