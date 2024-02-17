@@ -1,7 +1,7 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import BannerCollection from "../banner-collection";
-import Button from "../../../components/button";
+import Button from "../../../components/Button";
 import Wrapper from "../../../components/wrapper";
 import { Link } from "react-router-dom";
 

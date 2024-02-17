@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../../../components/button";
-import Star from "../../../components/star";
+import Button from "../../../components/Button";
+import Star from "../../../components/Star";
 
 export default function ProductList({ dataRender, paging }) {
   const VND = new Intl.NumberFormat("vi-VN", {

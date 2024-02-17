@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../../components/button";
+import Button from "../../components/Button";
 
 export default function NotFoundPage() {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { shopBands } from "../../../constants";
-import Button from "../../../components/button";
+import Button from "../../../components/Button";
 import Wrapper from "../../../components/wrapper";
 
 export default function ShopBands() {

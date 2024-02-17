@@ -1,8 +1,8 @@
 import React from "react";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
-import Button from "../../components/button";
-import Input from "../../components/input";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
 import Wrapper from "../../components/wrapper";
 
 export default function ContactForm() {

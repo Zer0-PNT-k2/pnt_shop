@@ -2,9 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import Price from "../../../components/price";
-import Star from "../../../components/star";
-import Button from "../../../components/button";
+import Price from "../../../components/Price";
+import Star from "../../../components/Star";
+import Button from "../../../components/Button";
 
 export default function BannerCollection() {
   const [data, setData] = useState([]);

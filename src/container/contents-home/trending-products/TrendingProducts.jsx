@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Price from "../../../components/price";
-import Star from "../../../components/star";
-import Button from "../../../components/button";
+import Price from "../../../components/Price";
+import Star from "../../../components/Star";
+import Button from "../../../components/Button";
 import Wrapper from "../../../components/wrapper";
 
 export default function TrendingProducts() {

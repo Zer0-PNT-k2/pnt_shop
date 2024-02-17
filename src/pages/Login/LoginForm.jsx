@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
-import Button from "../../components/button";
-import Input from "../../components/input";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
 
 export default function LoginForm() {
   const navigate = useNavigate();

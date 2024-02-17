@@ -1,7 +1,7 @@
 import React from "react";
 import { FaLongArrowAltRight } from "react-icons/fa";
-import Button from "../../../components/button";
-import Input from "../../../components/input";
+import Button from "../../../components/Button";
+import Input from "../../../components/Input";
 import { size, color } from "../../../constants";
 
 export default function SideBar({

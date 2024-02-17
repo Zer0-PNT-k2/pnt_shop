@@ -2,8 +2,8 @@ import React from "react";
 import { CiUser } from "react-icons/ci";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import Button from "../../components/button";
-import Input from "../../components/input";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
 
 export default function RegisterForm() {
   return (

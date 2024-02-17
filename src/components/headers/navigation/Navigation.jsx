@@ -9,8 +9,8 @@ import { IoIosSearch } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { listHeader } from "../../../constants";
 import { Carts } from "../../../contexts/CartContext";
-import Button from "../../button";
-import Input from "../../input";
+import Button from "../../Button";
+import Input from "../../Input";
 
 export default function Navigation() {
   const [isLogin] = useState(JSON.parse(localStorage.getItem("isLogin")));

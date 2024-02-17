@@ -1,7 +1,7 @@
 import { FaAngleDown } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa";
 import { MdAttachMoney } from "react-icons/md";
-import Button from "../components/button";
+import Button from "../components/Button";
 
 // Header
 export const listHeader = [

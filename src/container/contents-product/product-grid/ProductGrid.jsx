@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Pagination, PaginationItem } from "@mui/material";
-import Star from "../../../components/star";
-import Price from "../../../components/price";
-import Button from "../../../components/button";
+import Star from "../../../components/Star";
+import Price from "../../../components/Price";
+import Button from "../../../components/Button";
 
 export default function ProductGrid({ dataRender, paging }) {
   return (

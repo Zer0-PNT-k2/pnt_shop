@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import Breadcrumbs from "../../components/breadcrumbs";
-import Star from "../../components/star";
+import Star from "../../components/Star";
 import Wrapper from "../../components/wrapper";
 import { size, color } from "../../constants";
 import { Carts } from "../../contexts/CartContext";
