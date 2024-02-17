@@ -132,7 +132,7 @@ export const subBanners = [
 
 export const containers = [
   {
-    img: "/images/container1.png",
+    img: "/images/Container1.png",
     title: "MacBook Air",
     description: (
       <p className="opacity-50 pr-6 pb-8">
@@ -142,7 +142,7 @@ export const containers = [
     ),
   },
   {
-    img: "/images/container2.png",
+    img: "/images/Container2.png",
     title: "iPad Pro Max",
     description: (
       <p className="opacity-50 pr-6">
