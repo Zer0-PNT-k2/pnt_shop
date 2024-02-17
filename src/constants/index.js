@@ -46,7 +46,7 @@ export const shopifySection = [
     ),
   },
   {
-    img: "./images/ElectronicsStoreTwo.png",
+    img: "/images/ElectronicsStoreTwo.png",
     sale: "SALE UP TO 50% OFF",
     name: "Apple Watch Series",
     title: (
@@ -67,7 +67,7 @@ export const shopifySection = [
     ),
   },
   {
-    img: "./images/ElectronicsStoreThree.png",
+    img: "/images/ElectronicsStoreThree.png",
     sale: "SALE UP TO 45% OFF",
     name: "Apple Watch Series",
     title: (
@@ -91,7 +91,7 @@ export const shopifySection = [
 
 export const subBanners = [
   {
-    img: "./images/sub-banner-2.png",
+    img: "/images/sub-banner-2.png",
     title: "BIG SCREEN",
     name: "Smart Watch Series 7",
     price: (
@@ -110,7 +110,7 @@ export const subBanners = [
     ),
   },
   {
-    img: "./images/sub-banner-1.png",
+    img: "/images/sub-banner-1.png",
     title: "STUDIO DISPLAY",
     name: "600 nits of brightns",
     price: (
@@ -132,7 +132,7 @@ export const subBanners = [
 
 export const containers = [
   {
-    img: "./images/container1.png",
+    img: "/images/container1.png",
     title: "MacBook Air",
     description: (
       <p className="opacity-50 pr-6 pb-8">
@@ -142,7 +142,7 @@ export const containers = [
     ),
   },
   {
-    img: "./images/container2.png",
+    img: "/images/container2.png",
     title: "iPad Pro Max",
     description: (
       <p className="opacity-50 pr-6">
@@ -155,51 +155,51 @@ export const containers = [
 export const shopBands = [
   {
     title: "Speed Flow",
-    img: "./images/bands/SpeedFlow.png",
+    img: "/images/bands/SpeedFlow.png",
   },
   {
     title: "Half Moon",
-    img: "./images/bands/HalfMoon.png",
+    img: "/images/bands/HalfMoon.png",
   },
   {
     title: "Hexaware",
-    img: "./images/bands/Hexaware.png",
+    img: "/images/bands/Hexaware.png",
   },
   {
     title: "Crown & King",
-    img: "./images/bands/CrownKing.png",
+    img: "/images/bands/CrownKing.png",
   },
   {
     title: "Orchid",
-    img: "./images/bands/Orchid.png",
+    img: "/images/bands/Orchid.png",
   },
   {
     title: "Trispace",
-    img: "./images/bands/Trispace.png",
+    img: "/images/bands/Trispace.png",
   },
   {
     title: "Star Inc",
-    img: "./images/bands/StarInc.png",
+    img: "/images/bands/StarInc.png",
   },
   {
     title: "Crown & King",
-    img: "./images/bands/CrownKing.png",
+    img: "/images/bands/CrownKing.png",
   },
   {
     title: "Five Square",
-    img: "./images/bands/FiveSquare.png",
+    img: "/images/bands/FiveSquare.png",
   },
   {
     title: "Star Inc",
-    img: "./images/bands/StarInc.png",
+    img: "/images/bands/StarInc.png",
   },
   {
     title: "Crown & King",
-    img: "./images/bands/CrownKing.png",
+    img: "/images/bands/CrownKing.png",
   },
   {
     title: "Half Moon",
-    img: "./images/bands/HalfMoon.png",
+    img: "/images/bands/HalfMoon.png",
   },
 ];
 
