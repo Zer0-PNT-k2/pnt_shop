@@ -1,19 +1,21 @@
+import React from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { AiOutlinePhone } from "react-icons/ai";
 import { MdAccessTime } from "react-icons/md";
 import Wrapper from "../../components/wrapper";
 
-const Contact = () => {
+export default function Contact() {
   return (
     <Wrapper>
       <div className="text-base">
         <h1 className="text-4xl font-normal mb-2">
-        Chúng tôi luôn mong muốn được nghe từ bạn!
+          Chúng tôi luôn mong muốn được nghe từ bạn!
         </h1>
         <p>
           Bạn có thể gọi cho chúng tôi trong thời gian làm việc hoặc ghé thăm
-          văn phòng của chúng tôi.<br /> Tất cả các thư sẽ nhận được phản hồi trong
-          vòng 24 giờ. Thích nghe từ bạn!
+          văn phòng của chúng tôi.
+          <br /> Tất cả các thư sẽ nhận được phản hồi trong vòng 24 giờ. Thích
+          nghe từ bạn!
         </p>
       </div>
       <div className="grid grid-cols-3 gap-3 font-['Open_Serif'] my-12 text-base">
@@ -51,6 +53,4 @@ const Contact = () => {
       </div>
     </Wrapper>
   );
-};
-
-export default Contact;
+}

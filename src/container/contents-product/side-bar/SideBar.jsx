@@ -1,9 +1,10 @@
+import React from "react";
 import { FaLongArrowAltRight } from "react-icons/fa";
-import Button from '../../../components/button';
-import Input from '../../../components/input';
-import { size, color } from '../../../constants';
+import Button from "../../../components/button";
+import Input from "../../../components/input";
+import { size, color } from "../../../constants";
 
-const SideBar = ({
+export default function SideBar({
   onCheck,
   onPrePriceChange,
   onNextPriceChange,
@@ -11,7 +12,7 @@ const SideBar = ({
   handleReset,
   price,
   categories,
-}) => {
+}) {
   return (
     <div className="w-72 mr-12">
       <div className="text-base w-full bg-gray-100 px-4 py-6 mb-5 rounded-lg">
@@ -135,6 +136,4 @@ const SideBar = ({
       </div>
     </div>
   );
-};
-
-export default SideBar;
+}

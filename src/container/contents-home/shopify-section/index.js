@@ -1,1 +1,1 @@
-export { default } from './ShopifySection'
+export { default } from "./ShopifySection";

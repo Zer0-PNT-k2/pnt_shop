@@ -7,7 +7,7 @@ import "./style/index.css";
 import "./style/globals.css";
 // import App from "./App";
 import { routes } from "./router";
-import { CartContext } from "./components/cartContext/CartContext";
+import { CartContext } from "./contexts/CartContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

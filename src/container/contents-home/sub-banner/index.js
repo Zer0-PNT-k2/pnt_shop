@@ -1,1 +1,1 @@
-export { default } from './SubBanner'
+export { default } from "./SubBanner";

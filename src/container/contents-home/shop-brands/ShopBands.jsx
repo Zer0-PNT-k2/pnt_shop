@@ -1,8 +1,9 @@
-import { shopBands } from '../../../constants';
-import Button from '../../../components/button';
-import Wrapper from '../../../components/wrapper'
+import React from "react";
+import { shopBands } from "../../../constants";
+import Button from "../../../components/button";
+import Wrapper from "../../../components/wrapper";
 
-const ShopBands = () => {
+export default function ShopBands() {
   return (
     <Wrapper>
       <div className="flex justify-between pt-16 pb-6">
@@ -21,6 +22,4 @@ const ShopBands = () => {
       </div>
     </Wrapper>
   );
-};
-
-export default ShopBands;
+}

@@ -1,11 +1,12 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import Price from '../../../components/price';
-import Star from '../../../components/star';
-import Button from '../../../components/button';
+import Price from "../../../components/price";
+import Star from "../../../components/star";
+import Button from "../../../components/button";
 
-const Products = () => {
+export default function BannerCollection() {
   const [data, setData] = useState([]);
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/category/electronics")
@@ -53,9 +54,7 @@ const Products = () => {
                   </div>
                 </Link>
                 <div className="text-center">
-                  <Star
-                    stars={product.rating.rate}
-                  />
+                  <Star stars={product.rating.rate} />
                 </div>
                 <Price price={Math.ceil(product.price)} />
               </div>
@@ -65,6 +64,4 @@ const Products = () => {
       })}
     </Slider>
   );
-};
-
-export default Products;
+}

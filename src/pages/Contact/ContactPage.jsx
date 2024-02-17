@@ -1,8 +1,9 @@
+import React from "react";
 import Contact from "../../container/contents-contact/Contact";
 import ContactForm from "../../container/contents-contact/ContactForm";
 import Breadcrumbs from "../../components/breadcrumbs";
 
-const ContactPage = () => {
+export default function ContactPage() {
   const contactBreadcrumbs = [
     {
       to: "/contact",
@@ -17,6 +18,4 @@ const ContactPage = () => {
       <ContactForm />
     </div>
   );
-};
-
-export default ContactPage;
+}

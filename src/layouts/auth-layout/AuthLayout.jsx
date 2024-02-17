@@ -1,6 +1,7 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 
-const AuthLayout = () => {
+export default function AuthLayout() {
   return (
     <div className="flex bg-slate-100 h-screen items-center justify-center">
       <div className="w-96 h-auto p-8 bg-white rounded-2xl text-base">
@@ -16,6 +17,4 @@ const AuthLayout = () => {
       </div>
     </div>
   );
-};
-
-export default AuthLayout;
+}

@@ -1,15 +1,16 @@
+import React from "react";
 import Slider from "react-slick";
-import { shopifySection } from '../../../constants';
-import Wrapper from '../../../components/wrapper'
+import { shopifySection } from "../../../constants";
+import Wrapper from "../../../components/wrapper";
 
-const ShopifySection = () => {
+export default function ShopifySection() {
   const settings = {
     rtl: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    arrows: false
+    arrows: false,
   };
 
   return (
@@ -37,6 +38,4 @@ const ShopifySection = () => {
       })}
     </Slider>
   );
-};
-
-export default ShopifySection;
+}

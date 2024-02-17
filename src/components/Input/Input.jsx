@@ -1,13 +1,5 @@
+import React from "react";
 
-const Input = ({type, id, placeholder, ...rests}) => {
-  return (
-    <input 
-        type={type}
-        id={id}
-        placeholder={placeholder}
-        {...rests}
-    />
-  )
+export default function Input({ type, id, placeholder, ...rests }) {
+  return <input type={type} id={id} placeholder={placeholder} {...rests} />;
 }
-
-export default Input

@@ -1,13 +1,16 @@
+import React from "react";
 import { FaAngleDown, FaLocationDot, FaPhoneFlip } from "react-icons/fa6";
-import Wrapper from '../../wrapper'
+import Wrapper from "../../wrapper";
 
-const HeaderTop = () => {
+export default function HeaderTop() {
   return (
     <>
       <Wrapper>
         <div className="flex py-2 justify-between font-['Open_Sans'] text-base">
           <div>
-            <span className="">Chúng tôi mở cửa với số giờ và nhân viên hạn chế.</span>
+            <span className="">
+              Chúng tôi mở cửa với số giờ và nhân viên hạn chế.
+            </span>
           </div>
           <div>
             <div className="flex">
@@ -37,6 +40,4 @@ const HeaderTop = () => {
       ></div>
     </>
   );
-};
-
-export default HeaderTop;
+}

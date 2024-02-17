@@ -1,10 +1,11 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 import ScrollToTop from "react-scroll-to-top";
 import HeaderTop from "../../components/headers/header";
 import Navigation from "../../components/headers/navigation";
 import Footer from "../../components/footer";
 
-const MainLayout = () => {
+export default function MainLayout() {
   return (
     <div>
       <ScrollToTop
@@ -17,6 +18,4 @@ const MainLayout = () => {
       <Footer />
     </div>
   );
-};
-
-export default MainLayout;
+}

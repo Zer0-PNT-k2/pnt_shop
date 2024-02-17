@@ -1,10 +1,11 @@
+import React from "react";
 import { FaArrowRight } from "react-icons/fa";
-import BannerCollection from '../banner-collection';
-import Button from '../../../components/button';
-import Wrapper from '../../../components/wrapper';
+import BannerCollection from "../banner-collection";
+import Button from "../../../components/button";
+import Wrapper from "../../../components/wrapper";
 import { Link } from "react-router-dom";
 
-const PopularProducts = () => {
+export default function PopularProducts() {
   return (
     <Wrapper>
       <div className="font-['Open_Sans'] text-base">
@@ -29,6 +30,4 @@ const PopularProducts = () => {
       </div>
     </Wrapper>
   );
-};
-
-export default PopularProducts;
+}

@@ -1,12 +1,9 @@
-const Wrapper = ({children, ...rests}) => {
+import React from "react";
+
+export default function Wrapper({ children, ...rests }) {
   return (
-    <div
-    className="mx-auto max-w-screen-xl"
-    {...rests}
-    >
+    <div className="mx-auto max-w-screen-xl" {...rests}>
       {children}
     </div>
-  )
+  );
 }
-
-export default Wrapper

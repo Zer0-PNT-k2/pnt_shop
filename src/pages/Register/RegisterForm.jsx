@@ -1,10 +1,11 @@
+import React from "react";
 import { CiUser } from "react-icons/ci";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import Button from "../../components/button";
 import Input from "../../components/input";
 
-const RegisterForm = () => {
+export default function RegisterForm() {
   return (
     <>
       <span>
@@ -96,12 +97,8 @@ const RegisterForm = () => {
         Đăng kí
       </Button>
       <Link to="/">
-        <span className="block text-end mt-6">
-          Quay lại cửa hàng
-        </span>
+        <span className="block text-end mt-6">Quay lại cửa hàng</span>
       </Link>
     </>
   );
-};
-
-export default RegisterForm;
+}

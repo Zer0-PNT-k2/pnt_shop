@@ -1,7 +1,8 @@
+import React from "react";
 import { containers } from "../../../constants";
-import Wrapper from '../../../components/wrapper'
+import Wrapper from "../../../components/wrapper";
 
-const CustomProduct = () => {
+export default function CustomProduct() {
   return (
     <div className="w-full py-4 bg-gray-200 text-base">
       <Wrapper>
@@ -41,6 +42,4 @@ const CustomProduct = () => {
       </Wrapper>
     </div>
   );
-};
-
-export default CustomProduct;
+}

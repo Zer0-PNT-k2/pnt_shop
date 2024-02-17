@@ -1,15 +1,13 @@
-import React, { useContext, useEffect } from "react";
-import { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { FaRegHeart } from "react-icons/fa";
-import { MdAttachMoney } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import Breadcrumbs from "../../components/breadcrumbs";
 import Star from "../../components/star";
 import Wrapper from "../../components/wrapper";
 import { size, color } from "../../constants";
-import { Carts } from "../../components/cartContext/CartContext";
+import { Carts } from "../../contexts/CartContext";
 
-const Details = () => {
+export default function Details() {
   const [data, setData] = useState({});
   const count = useContext(Carts);
   const params = useParams();
@@ -25,19 +23,19 @@ const Details = () => {
     },
   ];
 
-  const VND = new Intl.NumberFormat('vi-VN', {
-    style: 'currency',
-    currency: 'VND',
+  const VND = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
   });
-  
+
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${params.id}`)
-    .then((res) => res.json())
-    .then((json) => {
-      const productDetail = processProductData(json);
-      setData(productDetail);
-    })
-    .catch((error) => console.log(error));
+      .then((res) => res.json())
+      .then((json) => {
+        const productDetail = processProductData(json);
+        setData(productDetail);
+      })
+      .catch((error) => console.log(error));
   }, [params]);
 
   const processProductData = (product) => {
@@ -100,7 +98,7 @@ const Details = () => {
 
     // Cuối cùng luôn đẩy dữ liệu vào local
     localStorage.setItem("dataCart", JSON.stringify(localCartData));
-    count.setCount(localCartData.length)
+    count.setCount(localCartData.length);
   };
 
   return (
@@ -133,7 +131,9 @@ const Details = () => {
               className="py-4 border-2 border-y-neutral-100 border-x-transparent
             flex items-center text-red-600 font-semibold text-lg ml-1 !text-3xl"
             >
-              <span className="">{VND.format(Math.ceil(data.price * 23000))}</span>
+              <span className="">
+                {VND.format(Math.ceil(data.price * 23000))}
+              </span>
             </div>
             <p className="w-4/6 my-7">{data.description}</p>
             <div className="my-6">
@@ -207,6 +207,4 @@ const Details = () => {
       </Wrapper>
     </>
   );
-};
-
-export default Details;
+}

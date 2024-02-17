@@ -1,11 +1,5 @@
-import React from 'react'
+import React from "react";
 
-const Pagination = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+export default function Pagination() {
+  return <div></div>;
 }
-
-export default Pagination

@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -15,14 +15,20 @@ li {
     padding-bottom: 12px;
 }
 
-thead, tbody, tr, th, td {
+thead,
+tbody,
+tr,
+th,
+td {
     border: 1px black solid;
 }
 
-thead, th {
+thead,
+th {
     height: 2rem;
 }
 
-tbody, td {
+tbody,
+td {
     height: 10rem;
 }

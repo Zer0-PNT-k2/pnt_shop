@@ -1,7 +1,8 @@
+import React from "react";
 import { subBanners } from "../../../constants";
-import Wrapper from '../../../components/wrapper'
+import Wrapper from "../../../components/wrapper";
 
-const SubBanner = () => {
+export default function SubBanner() {
   return (
     <Wrapper>
       <div className="flex gap-9 mb-20 font-['Open_Sans'] text-base">
@@ -23,6 +24,4 @@ const SubBanner = () => {
       </div>
     </Wrapper>
   );
-};
-
-export default SubBanner;
+}

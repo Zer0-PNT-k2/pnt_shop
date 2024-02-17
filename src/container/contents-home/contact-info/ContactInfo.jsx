@@ -1,7 +1,8 @@
+import React from "react";
 import { contactInfos } from "../../../constants";
-import Wrapper from '../../../components/wrapper'
+import Wrapper from "../../../components/wrapper";
 
-const ContactInfo = () => {
+export default function ContactInfo() {
   return (
     <div className="w-full pt-2 bg-gray-200 text-base">
       <Wrapper>
@@ -21,6 +22,4 @@ const ContactInfo = () => {
       </Wrapper>
     </div>
   );
-};
-
-export default ContactInfo;
+}

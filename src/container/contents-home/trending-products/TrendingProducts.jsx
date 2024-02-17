@@ -1,10 +1,11 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import Price from "../../../components/price";
 import Star from "../../../components/star";
 import Button from "../../../components/button";
 import Wrapper from "../../../components/wrapper";
 
-const TrendingProducts = () => {
+export default function TrendingProducts() {
   const [data, setData] = useState([]);
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -74,6 +75,4 @@ const TrendingProducts = () => {
       </div>
     </Wrapper>
   );
-};
-
-export default TrendingProducts;
+}

@@ -1,10 +1,11 @@
-import { Pagination, PaginationItem } from "@mui/material";
+import React from "react";
 import { Link } from "react-router-dom";
+import { Pagination, PaginationItem } from "@mui/material";
 import Star from "../../../components/star";
 import Price from "../../../components/price";
 import Button from "../../../components/button";
 
-const ProductGrid = ({ dataRender, paging }) => {
+export default function ProductGrid({ dataRender, paging }) {
   return (
     <>
       <div className="grid grid-cols-4 grid-rows-3 gap-6">
@@ -61,6 +62,4 @@ const ProductGrid = ({ dataRender, paging }) => {
       </div>
     </>
   );
-};
-
-export default ProductGrid;
+}

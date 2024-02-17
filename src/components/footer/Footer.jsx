@@ -1,6 +1,7 @@
+import React from "react";
 import Button from "../button";
 
-const Footer = () => {
+export default function Footer() {
   return (
     <div className="w-full py-16 bg-black text-white text-base">
       <div
@@ -49,7 +50,8 @@ const Footer = () => {
         <div>
           <h1 className="font-semibold text-2xl mb-4">THÔNG TIN</h1>
           <p>
-          Tải xuống Ứng dụng của chúng tôi và được giảm giá thêm 15% cho đơn hàng đầu tiên của bạn..!
+            Tải xuống Ứng dụng của chúng tôi và được giảm giá thêm 15% cho đơn
+            hàng đầu tiên của bạn..!
           </p>
           <div className="flex gap-2 mt-5">
             <Button>
@@ -71,6 +73,4 @@ const Footer = () => {
       </div>
     </div>
   );
-};
-
-export default Footer;
+}

@@ -1,7 +1,8 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import Button from "../../components/button";
 
-const NotFoundPage = () => {
+export default function NotFoundPage() {
   return (
     <div>
       <div className="relative">
@@ -40,6 +41,4 @@ const NotFoundPage = () => {
       </div>
     </div>
   );
-};
-
-export default NotFoundPage;
+}

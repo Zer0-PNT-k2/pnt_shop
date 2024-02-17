@@ -1,8 +1,9 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "../../components/breadcrumbs";
 import Wrapper from "../../components/wrapper/Wrapper";
 
-const Wishlist = () => {
+export default function Wishlist() {
   const contactBreadcrumbs = [
     {
       to: "/wishlist",
@@ -28,6 +29,4 @@ const Wishlist = () => {
       </Wrapper>
     </>
   );
-};
-
-export default Wishlist;
+}

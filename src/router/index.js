@@ -19,7 +19,7 @@ export const routes = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Home />,
       },
       {
         path: "products/details/:id",
@@ -27,7 +27,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: "products/all",
-        element: <ProductsPage />
+        element: <ProductsPage />,
       },
       {
         path: "blog",

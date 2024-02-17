@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import { IoList } from "react-icons/io5";
@@ -6,7 +7,7 @@ import SideBar from "../../container/contents-product/side-bar";
 import ProductList from "../../container/contents-product/product-list";
 import ProductGrid from "../../container/contents-product/product-grid";
 
-const ProductLayout = ({
+export default function ProductLayout({
   view,
   dataRender,
   paging,
@@ -17,8 +18,8 @@ const ProductLayout = ({
   handleFilter,
   handleReset,
   price,
-  categories
-}) => {
+  categories,
+}) {
   const sortArr = [
     {
       id: 1,
@@ -106,14 +107,20 @@ const ProductLayout = ({
             </div>
           </div>
           {view === "list" ? (
-            <ProductList dataRender={dataRender} paging={paging} price={price} />
+            <ProductList
+              dataRender={dataRender}
+              paging={paging}
+              price={price}
+            />
           ) : (
-            <ProductGrid dataRender={dataRender} paging={paging} price={price} />
+            <ProductGrid
+              dataRender={dataRender}
+              paging={paging}
+              price={price}
+            />
           )}
         </div>
       </div>
     </Wrapper>
   );
-};
-
-export default ProductLayout;
+}

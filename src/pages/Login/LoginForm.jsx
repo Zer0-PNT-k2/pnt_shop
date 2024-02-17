@@ -1,27 +1,21 @@
+import axios from "axios";
+import React, { useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
-import Button from '../../components/button';
-import Input from '../../components/input';
-import { useState } from "react";
-import axios from "axios";
+import Button from "../../components/button";
+import Input from "../../components/input";
 
-// import alias in
-
-const LoginForm = () => {
-  // mor_2314
-  // 83r5^_
+export default function LoginForm() {
   const navigate = useNavigate();
-  const [user, setUser] = useState({ username: "", password: "" })
+  const [user, setUser] = useState({ username: "", password: "" });
 
   const handleGetInput = (e) => {
-    setUser(
-      prev => ({
-        ...prev,
-        [e.target.name]: e.target.value
-      })
-    )
-  }
+    setUser((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -30,15 +24,15 @@ const LoginForm = () => {
       url: "https://fakestoreapi.com/auth/login",
       data: user,
     });
-    if (resp.status == 200) {
+    if (resp.status === 200) {
       localStorage.setItem("isLogin", true);
       localStorage.setItem("token", resp.data.token);
       navigate("/");
     } else {
-      // Xu ly loi dang nhap 
-      console.log("loi")
+      // Xu ly loi dang nhap
+      console.log("loi");
     }
-  }
+  };
 
   return (
     <form onSubmit={handleLogin}>
@@ -92,6 +86,4 @@ const LoginForm = () => {
       </span>
     </form>
   );
-};
-
-export default LoginForm;
+}

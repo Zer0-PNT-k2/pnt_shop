@@ -1,20 +1,21 @@
-import { Link } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
-import { FaRegHeart } from "react-icons/fa6";
-import { IoIosSearch } from "react-icons/io";
-import { FiShoppingBag } from "react-icons/fi";
-import { FaRegUser } from "react-icons/fa";
-import { listHeader } from "../../../constants";
+import React from "react";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 import { useContext, useEffect, useState } from "react";
+import { FaRegUser } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa6";
+import { FiShoppingBag } from "react-icons/fi";
+import { IoIosSearch } from "react-icons/io";
+import { Link } from "react-router-dom";
+import { listHeader } from "../../../constants";
+import { Carts } from "../../../contexts/CartContext";
 import Button from "../../button";
 import Input from "../../input";
-import { Carts } from "../../cartContext/CartContext";
 
-const Navigation = () => {
+export default function Navigation() {
   const [isLogin] = useState(JSON.parse(localStorage.getItem("isLogin")));
   const [user, setUser] = useState({});
-  const count = useContext(Carts)
+  const count = useContext(Carts);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -108,6 +109,4 @@ const Navigation = () => {
       </div>
     </div>
   );
-};
-
-export default Navigation;
+}

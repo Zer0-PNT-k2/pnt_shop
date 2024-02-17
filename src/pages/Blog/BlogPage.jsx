@@ -1,7 +1,7 @@
-import Breadcrumbs from '../../components/breadcrumbs'
+import React from "react";
+import Breadcrumbs from "../../components/breadcrumbs";
 
-
-const BlogPage = () => {
+export default function BlogPage() {
   const blogBreadcrumbs = [
     {
       to: "/blog",
@@ -11,9 +11,7 @@ const BlogPage = () => {
 
   return (
     <div>
-    <Breadcrumbs breadcrumbs={blogBreadcrumbs} />
-  </div>
-  )
+      <Breadcrumbs breadcrumbs={blogBreadcrumbs} />
+    </div>
+  );
 }
-
-export default BlogPage

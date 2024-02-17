@@ -1,1 +1,1 @@
-export { default } from './ShopBands'
+export { default } from "./ShopBands";

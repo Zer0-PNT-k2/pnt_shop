@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Breadcrumbs from "../../components/breadcrumbs";
 import ProductLayout from "../../layouts/product-layout/ProductLayout";
 
-const Products = () => {
+export default function ProductsPage() {
   const pageSize = 12;
   const [query] = useSearchParams();
   const [datas, setDatas] = useState([]);
@@ -161,6 +161,4 @@ const Products = () => {
       />
     </>
   );
-};
-
-export default Products;
+}

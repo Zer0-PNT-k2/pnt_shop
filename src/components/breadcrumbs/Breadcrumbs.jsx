@@ -1,9 +1,10 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import { TiHome } from "react-icons/ti";
 import { MdOutlineNavigateNext } from "react-icons/md";
-import { Link } from "react-router-dom";
 import Wrapper from "../wrapper";
 
-function Breadcrumbs({ breadcrumbs }) {
+export default function Breadcrumbs({ breadcrumbs }) {
   const lastIndex = breadcrumbs.length - 1;
   const lastItemAtrr = { "aria-current": "page" };
 
@@ -45,5 +46,3 @@ function Breadcrumbs({ breadcrumbs }) {
     </div>
   );
 }
-
-export default Breadcrumbs;

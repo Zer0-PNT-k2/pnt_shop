@@ -1,10 +1,11 @@
+import React from "react";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import Button from "../../components/button";
 import Input from "../../components/input";
 import Wrapper from "../../components/wrapper";
 
-const ContactForm = () => {
+export default function ContactForm() {
   const formRef = useRef();
 
   const sendEmail = (e) => {
@@ -92,6 +93,4 @@ const ContactForm = () => {
       </div>
     </Wrapper>
   );
-};
-
-export default ContactForm;
+}
