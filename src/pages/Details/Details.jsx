@@ -4,14 +4,21 @@ import { useParams } from "react-router-dom";
 import Breadcrumbs from "../../components/breadcrumbs";
 import Star from "../../components/Star";
 import Wrapper from "../../components/wrapper";
-import { size, color } from "../../constants";
 import { Carts } from "../../contexts/CartContext";
+import FormPay from "../../components/Dialog/FormPay/FormPay";
+import { IoMdCart } from "react-icons/io";
+import {ToastContainer } from "react-toastify";
+import ToastifySuccess from "../../components/toasttify/success/ToastifySuccess";
 
 export default function Details() {
+  const token = localStorage.getItem("token");
+  const [open, setOpen] = useState(false);
   const [data, setData] = useState({});
+  let localCartData = JSON.parse(localStorage.getItem("dataCart") || "[]");
   const count = useContext(Carts);
   const params = useParams();
-  let localCartData = JSON.parse(localStorage.getItem("dataCart") || "[]");
+  // const [objCart, setObjCart] = useState();
+
   const contactBreadcrumbs = [
     {
       to: "/products/all",
@@ -28,8 +35,15 @@ export default function Details() {
     currency: "VND",
   });
 
+  // [GET] detail /:_id
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${params.id}`)
+    fetch(`http://localhost:3001/products/${params.id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((json) => {
         const productDetail = processProductData(json);
@@ -39,10 +53,16 @@ export default function Details() {
   }, [params]);
 
   const processProductData = (product) => {
-    const sizes = size.map((s, i) => ({ ...s, isChecked: i === 0 }));
-    const colors = color.map((c, i) => ({ ...c, isChecked: i === 0 }));
+    const size_id = product.size_id.map((s, i) => ({
+      ...s,
+      isChecked: i === 0,
+    }));
+    const color_id = product.color_id.map((c, i) => ({
+      ...c,
+      isChecked: i === 0,
+    }));
 
-    return { ...product, colors, sizes, count: 1 };
+    return { ...product, color_id, size_id };
   };
 
   const handleCount = (direction) => {
@@ -57,11 +77,12 @@ export default function Details() {
     });
   };
 
+  // Xử lý check
   const handleStateCheck = (entity, property) => {
     setData((prev) => {
       const state = prev[property].map((item) => ({
         ...item,
-        isChecked: item.id === entity.id,
+        isChecked: item._id === entity._id,
       }));
       return { ...prev, [property]: state };
     });
@@ -71,18 +92,19 @@ export default function Details() {
     // [] --> chua co san pham nao trong gio hang
     // [{id: 1}] --> Nhung detailID = 2 -->  chua co san pham nao trong gio hang
     const isExists = localCartData.find((product) => {
-      const sizeChecked = product.sizes.find((s) => s.isChecked);
-      const colorChecked = product.colors.find((s) => s.isChecked);
+      const sizeChecked = product?.size_id.find((s) => s.isChecked);
+      const colorChecked = product?.color_id.find((s) => s.isChecked);
 
-      const sizeCurrChecked = data.sizes.find((s) => s.isChecked);
-      const colorCurrChecked = data.colors.find((s) => s.isChecked);
+      const sizeCurrChecked = data?.size_id.filter((s) => s.isChecked);
+      const colorCurrChecked = data?.color_id.filter((s) => s.isChecked);
 
       return (
-        product.id === data.id &&
-        sizeChecked.id === sizeCurrChecked.id &&
-        colorChecked.id === colorCurrChecked.id
+        product._id === data._id &&
+        sizeChecked._id === sizeCurrChecked[0]._id &&
+        colorChecked._id === colorCurrChecked[0]._id
       );
     });
+
     // Trường hợp có sản phẩm trong giỏ hàng r
     if (isExists) {
       localCartData = localCartData.map((prev) => ({
@@ -99,7 +121,16 @@ export default function Details() {
     // Cuối cùng luôn đẩy dữ liệu vào local
     localStorage.setItem("dataCart", JSON.stringify(localCartData));
     count.setCount(localCartData.length);
+    ToastifySuccess("Thêm vào giỏ hàng thành công!!!")
   };
+  
+  function handleClickOpen() {
+    setOpen(true);
+  }
+
+  function handleClose() {
+    setOpen(false);
+  }
 
   return (
     <>
@@ -110,12 +141,12 @@ export default function Details() {
             <div className="w-96 flex rounded border border-black">
               <img
                 className="w-72 h-72 my-12 mx-auto cursor-pointer hover:scale-125 transform-gpu"
-                src={data.image}
+                src={`http://localhost:3001/${data?.image}`}
                 alt={data.title}
               />
             </div>
             {/* Ảnh cùng loại */}
-            <div></div>
+            {/* <div></div> */}
           </div>
           <div className="col-span-6 px-9 text-base">
             <h1 className="text-2xl font-bold">{data.title}</h1>
@@ -138,47 +169,53 @@ export default function Details() {
             <p className="w-4/6 my-7">{data.description}</p>
             <div className="my-6">
               <span>Size: </span>
-              {data.sizes?.map((s, i) => (
+              {data.size_id?.map((s, i) => (
                 <button
                   key={i}
                   className={`border border-black mx-2 w-12 h-6 rounded-lg ${
                     s.isChecked ? "bg-red-500" : ""
                   }`}
-                  value={s.title}
-                  onClick={(e) => handleStateCheck(s, "sizes")}
+                  value={s.name}
+                  onClick={(e) => handleStateCheck(s, "size_id")}
                 >
-                  {s.title}
+                  {s.name}
                 </button>
               ))}
             </div>
             <div className="flex my-9 h-8 place-items-center">
               <span>Color: </span>
-              {data.colors?.map((c, i) => (
+              {data.color_id?.map((c, i) => (
                 <button
                   key={i}
-                  className={`${c.css} ${c.isChecked ? "bg-white" : ""}`}
-                  value={c.title}
-                  onClick={(e) => handleStateCheck(c, "colors")}
-                ></button>
+                  className={`bg-${c.name}-500 p-1 m-2 rounded-full ${
+                    c.isChecked ? "border-solid border-lime-400 border-2" : ""
+                  }`}
+                  value={c.name}
+                  onClick={(e) => handleStateCheck(c, "color_id")}
+                >
+                  <div
+                    className={`bg-${c.name} w-6 h-6 text-center rounded-full border-solid border-gray-500 border-2`}
+                  ></div>
+                </button>
               ))}
             </div>
             <div className="flex w-96 my-4 justify-between">
               <div className="flex h-12 w-32 place-items-center justify-between">
                 <button
-                  onClick={() => handleCount("giam")}
+                  onClick={(e) => handleCount("giam")}
                   className="border border-black px-2"
                 >
                   -
                 </button>
                 <span>{data.count}</span>
                 <button
-                  onClick={() => handleCount("tang")}
+                  onClick={(e) => handleCount("tang")}
                   className="border border-black px-2"
                 >
                   +
                 </button>
               </div>
-              <div className="">
+              <div>
                 <button
                   type="submit"
                   onClick={handelAddCart}
@@ -187,6 +224,7 @@ export default function Details() {
                 >
                   Thêm vào giỏ hàng
                 </button>
+                <ToastContainer />
               </div>
               <div>
                 <button
@@ -198,9 +236,21 @@ export default function Details() {
               </div>
             </div>
             <div className="w-96 my-6">
-              <button className="w-full rounded bg-red-600 text-white py-2.5 mt-2 ">
-                Mua
-              </button>
+              <div>
+                <div
+                  onClick={handleClickOpen}
+                  className="flex justify-center text-center w-full py-1 content-center hover:bg-red-600 text-red-500  hover:text-white border-red-600 border rounded-md border-solid"
+                >
+                  <IoMdCart className="w-6 h-6 mr-2" /> Mua
+                </div>
+
+                <FormPay
+                  token={token}
+                  open={open}
+                  handleClose={handleClose}
+                  data={data}
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -10,10 +10,10 @@ export default function ProductList({ dataRender, paging }) {
   });
 
   return (
-    <div className="snap-align-none">
-      {dataRender.map((product) => {
+    <div className="snap-align-none mt-5 max-h-[1220px] overflow-y-scroll">
+      {dataRender.map((product, index) => {
         return (
-          <Link key={product.id} to={`/products/details/${product.id}`}>
+          <Link key={index} to={`/products/details/${product._id}`}>
             <div
               className="grid grid-cols-2 gap-2
               bg-gray-100 mt-5 shadow-xl hover:shadow-2xl"
@@ -22,7 +22,7 @@ export default function ProductList({ dataRender, paging }) {
                 <Button>
                   <img
                     className="w-64 h-64 my-4"
-                    src={product.image}
+                    src={`http://localhost:3001/${product?.image}`}
                     alt={product.title}
                   />
                 </Button>

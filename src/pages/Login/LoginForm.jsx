@@ -5,10 +5,14 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import { ToastContainer } from "react-toastify";
+import ToastifyWarning from "../../components/toasttify/warning/ToastifyWarning";
 
 export default function LoginForm() {
+  // mor_2314
+  // 83r5^_
   const navigate = useNavigate();
-  const [user, setUser] = useState({ username: "", password: "" });
+  const [user, setUser] = useState({ email: "", password: "" });
 
   const handleGetInput = (e) => {
     setUser((prev) => ({
@@ -18,20 +22,24 @@ export default function LoginForm() {
   };
 
   const handleLogin = async (e) => {
-    e.preventDefault();
-    const resp = await axios({
+    try {
+      e.preventDefault();
+    const response = await axios({
       method: "POST",
-      url: "https://fakestoreapi.com/auth/login",
+      url: "http://localhost:3001/auth/login",
       data: user,
     });
-    if (resp.status === 200) {
+    if (response.status === 200) {
       localStorage.setItem("isLogin", true);
-      localStorage.setItem("token", resp.data.token);
-      navigate("/");
-    } else {
-      // Xu ly loi dang nhap
-      console.log("loi");
+      localStorage.setItem("token", response.data?.accessToken);
+      setTimeout(() => {
+        navigate("/");
+      }, 2000)
     }
+    } catch (error) {
+      ToastifyWarning(error.response.data.message)
+    }
+    
   };
 
   return (
@@ -42,23 +50,23 @@ export default function LoginForm() {
         <p className="opacity-50">to continue to PNT-SHOP</p>
       </div>
       <div className="mb-6">
-        <label className="inline-flex items-center" htmlFor="username-login">
-          <FaRegUser className="inline-flex" /> <b>Username</b>
+        <label className="inline-flex items-center" htmlFor="email-login">
+          <FaRegUser className="inline-flex mr-2" /> <b>Email</b>
         </label>
         <br />
         <Input
           className="w-full pl-3 outline-none border-solid border-2 border-b-blue-500 rounded-xl"
-          id="username-login"
-          name="username"
-          type="text"
-          autoComplete="new-username"
-          placeholder="Username"
+          id="email-login"
+          name="email"
+          type="email"
+          autoComplete="new-email"
+          placeholder="Email"
           onChange={handleGetInput}
         />
       </div>
       <div className="mb-6">
         <label className="inline-flex items-center" htmlFor="password-login">
-          <RiLockPasswordFill className="inline-flex" /> <b>Password</b>
+          <RiLockPasswordFill className="inline-flex mr-2" /> <b>Password</b>
         </label>
         <br />
         <Input
@@ -77,8 +85,8 @@ export default function LoginForm() {
       >
         Login
       </Button>
-
-      <span>
+      <ToastContainer />
+      <span className="block w-full text-center">
         No account?
         <Button className="px-2 py-6 text-blue-500">
           <Link to="/auth/register">Sign up</Link>

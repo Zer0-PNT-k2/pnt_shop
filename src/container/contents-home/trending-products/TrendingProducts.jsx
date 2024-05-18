@@ -7,11 +7,17 @@ import Wrapper from "../../../components/wrapper";
 
 export default function TrendingProducts() {
   const [data, setData] = useState([]);
+
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("http://localhost:3001/home", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
-      .then((data) => {
-        setData(data.slice(0, 8));
+      .then((datas) => {
+        setData(datas.slice(0, 8));
       })
       .catch((error) => console.log(error));
   }, []);
@@ -41,14 +47,14 @@ export default function TrendingProducts() {
           {data.map((product) => {
             return (
               <div
-                key={product.id}
+                key={product._id}
                 className="flex justify-center text-center rounded-md bg-gray-100 shadow-xl hover:shadow-2xl"
               >
                 <div className="w-auto h-auto text-base mb-8">
                   <Button>
                     <img
                       className="w-40 h-40 my-8"
-                      src={product.image}
+                      src={`http://localhost:3001/${product.image}`}
                       alt={product.title}
                     />
                   </Button>

@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./style/index.css";
 import "./style/globals.css";
+import 'react-toastify/dist/ReactToastify.css';
 // import App from "./App";
 import { routes } from "./router";
 import { CartContext } from "./contexts/CartContext";

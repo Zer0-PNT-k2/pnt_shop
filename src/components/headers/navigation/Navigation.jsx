@@ -2,38 +2,60 @@ import React from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useContext, useEffect, useState } from "react";
-import { FaRegUser } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa6";
 import { FiShoppingBag } from "react-icons/fi";
 import { IoIosSearch } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { listHeader } from "../../../constants";
 import { Carts } from "../../../contexts/CartContext";
 import Button from "../../Button";
 import Input from "../../Input";
+import { Menu, MenuItem } from "@mui/material";
 
 export default function Navigation() {
-  const [isLogin] = useState(JSON.parse(localStorage.getItem("isLogin")));
+  const [isLogin] = useState(localStorage.getItem("isLogin"));
   const [user, setUser] = useState({});
   const count = useContext(Carts);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const isLogin = localStorage.getItem("isLogin");
-    if (isLogin) {
+    if(isLogin === "false") {
+      navigate("/auth/login");
+    }
+    else {
       const token = localStorage.getItem("token");
       const decoded = jwtDecode(token);
-      const userId = decoded.sub;
+      const userId = decoded.userId;
       axios({
         method: "GET",
-        url: `https://fakestoreapi.com/users/${userId}`,
+        url: `http://localhost:3001/auth/${userId}`,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
       }).then((res) => {
-        setUser(res);
+        if (res.data.datas?.role !== "user") {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
+        setUser(res.data);
       });
     }
-  }, []);
+  }, [isLogin, navigate]);
 
   const handleLogout = () => {
     localStorage.setItem("isLogin", false);
+    localStorage.removeItem("token");
+  };
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -77,7 +99,7 @@ export default function Navigation() {
             </Button>
           </div>
         </form>
-        <div className="ml-5 mr-2">
+        <div className="ml-5">
           <Link to="/wishlist">
             <Button type="submit" className="inline-flex focus:text-red-500">
               <FaRegHeart className="w-6 h-6 " />
@@ -94,21 +116,36 @@ export default function Navigation() {
             </Button>
           </Link>
         </div>
-        <div className="w-1/2">
-          <Button type="submit" className="inline-flex hover:text-red-500">
-            {isLogin ? (
-              <Link to="/auth/login">
-                <button type="submit" onClick={handleLogout}>
-                  <span className="text-base">{`${user.data?.name.lastname} ${user.data?.name.firstname}`}</span>
-                </button>
-              </Link>
-            ) : (
-              <Link to="/auth/login">
-                <FaRegUser className="w-6 h-6" />
-              </Link>
-            )}
-          </Button>
-        </div>
+        <Button
+          id="basic-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+        >
+          <div className="flex items-center w-16">
+            <img
+              className="w-10 h-10 rounded-full mr-1"
+              src="https://th.bing.com/th/id/OIP.Gg0lRdcH7S-EO2NWbRzCMQAAAA?pid=ImgDet&w=167&h=183&c=7&dpr=1.3"
+              alt=""
+            />
+            <span className="text-base">{`${user.datas?.name}`}</span>
+          </div>
+        </Button>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+        >
+          <MenuItem onClick={handleClose}>My account</MenuItem>
+          <Link to="/auth/login">
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+          </Link>
+        </Menu>
       </div>
     </div>
   );

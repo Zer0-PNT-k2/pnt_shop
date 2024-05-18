@@ -2,7 +2,6 @@ import React from "react";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
-import { size, color } from "../../../constants";
 
 export default function SideBar({
   onCheck,
@@ -12,10 +11,12 @@ export default function SideBar({
   handleReset,
   price,
   categories,
+  sizes,
+  colors,
 }) {
   return (
     <div className="w-72 mr-12">
-      <div className="text-base w-full bg-gray-100 px-4 py-6 mb-5 rounded-lg">
+      {/* <div className="text-base w-full bg-gray-100 px-4 py-6 mb-5 rounded-lg">
         <h1 className="text-2xl mb-5">Thống kê</h1>
         <ul>
           <li>
@@ -39,7 +40,7 @@ export default function SideBar({
             Hết hàng <span>(7)</span>
           </li>
         </ul>
-      </div>
+      </div> */}
       <div className="text-base w-full bg-gray-100 px-4 py-6 mb-5 rounded-lg">
         <h1 className="text-2xl">Giá</h1>
         <span className="block my-3">
@@ -92,17 +93,17 @@ export default function SideBar({
       <div className="text-base w-full bg-gray-100 px-4 py-6 mb-5 rounded-lg">
         <h1 className="text-2xl mb-5">Loại</h1>
         <ul className="h-44 overflow-y-scroll">
-          {categories.map((c, i) => (
+          {categories.map((category, i) => (
             <li key={i}>
               <Input
                 type="checkbox"
                 onChange={onCheck}
                 name="Loai"
-                value={c.title}
-                checked={c.isChecked}
+                value={category.name}
+                checked={category.isChecked}
                 className="mr-1"
               />
-              {c.title} <span>({c.quantity})</span>
+              {category.name} <span>({category.quantity})</span>
             </li>
           ))}
         </ul>
@@ -110,15 +111,16 @@ export default function SideBar({
       <div className="text-base w-full bg-gray-100 px-4 py-6 mb-5 rounded-lg">
         <h1 className="text-2xl mb-5">Kích thước</h1>
         <ul className="h-44 overflow-y-scroll">
-          {size.map((s, i) => (
+          {sizes.map((size, i) => (
             <li key={i}>
               <Input
                 type="checkbox"
                 onChange={onCheck}
-                value={s.title}
+                name="Size"
+                value={size.name}
                 className="mr-1"
               />
-              {s.title} <span>(9)</span>
+              {size.name} <span>({size.quantity})</span>
             </li>
           ))}
         </ul>
@@ -126,10 +128,16 @@ export default function SideBar({
       <div className="text-base w-full bg-gray-100 px-4 py-6 mb-5 rounded-lg">
         <h1 className="text-2xl mb-5">Màu</h1>
         <ul>
-          {color.map((c, i) => (
+          {colors.map((color, i) => (
             <li key={i}>
-              <Input type="checkbox" value={c.title} className="mr-1" />
-              {c.title} <span>(9)</span>
+              <Input
+                type="checkbox"
+                onChange={onCheck}
+                name="Color"
+                value={color.name}
+                className="mr-1"
+              />
+              {color.name} <span>({color.quantity})</span>
             </li>
           ))}
         </ul>

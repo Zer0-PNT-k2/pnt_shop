@@ -9,8 +9,15 @@ import Wishlist from "../pages/Wishlist";
 import OrdersPage from "../pages/Orders/OrdersPage";
 import AuthLayout from "../layouts/auth-layout/AuthLayout";
 import MainLayout from "../layouts/main-layout/MainLayout";
+import MainLayoutAdmin from "../layouts/main-layout/MainLayoutAdmin";
 import NotFoundPage from "../pages/NotFound-404";
 import Details from "../pages/Details";
+import DashboardAdmin from "../pages/admin/dashboard-admin";
+import ProductsManager from "../pages/admin/products-manager/ProductsManager";
+import AccountManager from "../pages/admin/account-manager";
+import OrderManager from "../pages/admin/order-manager/OrderManager";
+import { ProductEdit } from "../pages/admin/edit-form/product-manager/ProductEdit";
+import { OrderEdit } from "../pages/admin/edit-form/order-manager/OrderEdit";
 
 export const routes = createBrowserRouter([
   {
@@ -19,6 +26,7 @@ export const routes = createBrowserRouter([
     children: [
       {
         index: true,
+        path: "/",
         element: <Home />,
       },
       {
@@ -48,10 +56,41 @@ export const routes = createBrowserRouter([
     ],
   },
   {
-    path: "auth",
+    path: "/admin",
+    element: <MainLayoutAdmin />,
+    children: [
+      {
+        index: true,
+        element: <DashboardAdmin />,
+      },
+      {
+        path: "accounts",
+        element: <AccountManager />,
+      },
+      {
+        path: "products",
+        element: <ProductsManager />,
+      },
+      {
+        path: "products/edit/:id",
+        element: <ProductEdit />,
+      },
+      {
+        path: "orders",
+        element: <OrderManager />,
+      },
+      {
+        path: "orders/edit/:id",
+        element: <OrderEdit />,
+      },
+    ],
+  },
+  {
+    path: "/auth",
     element: <AuthLayout />,
     children: [
       {
+        index: true,
         path: "login",
         element: <LoginForm />,
       },

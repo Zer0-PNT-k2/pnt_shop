@@ -19,6 +19,8 @@ export default function ProductLayout({
   handleReset,
   price,
   categories,
+  sizes,
+  colors,
 }) {
   const sortArr = [
     {
@@ -28,38 +30,23 @@ export default function ProductLayout({
     },
     {
       id: 2,
-      title: "Bán chạy nhất",
+      title: "Sắp xếp từ A-Z",
       value: 2,
     },
     {
       id: 3,
-      title: "Sắp xếp từ A-Z",
+      title: "Sắp xếp từ Z-A",
       value: 3,
     },
     {
       id: 4,
-      title: "Sắp xếp từ Z-A",
+      title: "Sắp xếp giá tăng dần",
       value: 4,
     },
     {
       id: 5,
-      title: "Sắp xếp giá tăng dần",
-      value: 5,
-    },
-    {
-      id: 6,
       title: "Sắp xếp giá giảm dần",
-      value: 6,
-    },
-    {
-      id: 7,
-      title: "Sắp xếp tgian tăng dần",
-      value: 7,
-    },
-    {
-      id: 8,
-      title: "Sắp xếp tgian giảm dần",
-      value: 8,
+      value: 5,
     },
   ];
 
@@ -74,6 +61,8 @@ export default function ProductLayout({
           handleReset={handleReset}
           price={price}
           categories={categories}
+          sizes={sizes}
+          colors={colors}
         />
         <div className="flex-1">
           <div className="flex h-12 px-8 justify-between  text-base border-2 border-gray-200 items-center">
@@ -85,9 +74,6 @@ export default function ProductLayout({
                 <IoList className="w-7 h-7 mt-1 focus:bg-red-600" />
               </Link>
             </div>
-            {/* <div className="flex justify-evenly">
-              Trang hiện tại {paging.page} trên tổng {paging.totalPages} trang
-            </div> */}
             <div className="flex w-70 justify-evenly">
               <div className="mt-1 mr-2">
                 <b className="">Sắp xếp:</b>
